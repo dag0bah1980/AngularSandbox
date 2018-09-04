@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 
+
 //routing
 import { rootRouterConfig } from './app.routing';
 
@@ -33,7 +34,10 @@ import { LoginComponent } from './anon/login/login.component';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
