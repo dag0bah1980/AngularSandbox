@@ -61,4 +61,14 @@ export class LoginComponent {
       this.errorMessage = err.message;
     })
   }
+
+  bypassLogin(value){
+    this.authService.doBypassLogin(value)
+    .then(res => {
+      this.router.navigate(['/']);
+    }, err => {
+      console.log(err);
+      this.errorMessage = err.message;
+    })
+  }
 }

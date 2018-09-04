@@ -84,5 +84,10 @@ export class AuthService {
     });
   }
 
+  doBypassLogin(value){
+    return new Promise<any>((resolve, reject) => {
+      resolve(this);
+    })
+  }
 
 }
