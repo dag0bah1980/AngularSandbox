@@ -6,7 +6,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 //routing
-import { rootRouterConfig } from './app.routing';
+import { rootRouting } from './app.routing';
+
+//modules
+import { AuthModule } from './auth/auth.module';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -29,13 +32,14 @@ import { LoginComponent } from './anon/login/login.component';
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(rootRouterConfig, { useHash: false }),
+    rootRouting,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
   providers: [
     AuthService,
+    AuthModule,
 
   ],
   bootstrap: [AppComponent]

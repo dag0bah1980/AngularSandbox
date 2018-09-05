@@ -23,16 +23,9 @@
               "src/assets"
             ],
             "styles": [
-              { "input": "node_modules/bootstrap3/dist/css/bootstrap.min.css" },
-              { "input": "node_modules/font-awesome/css/font-awesome.css" },
-              { "input": "node_modules/admin-lte/dist/css/skins/_all-skins.css" },
-              { "input": "node_modules/admin-lte/dist/css/skins/AdminLTE.min.css" },
               "src/styles.css"
             ],
             "scripts": [
-              { "input": "node_modules/jquery/dist/jquery.js" },
-              { "input": "node_modules/bootstrap3/dist/js/bootstrap.js" },
-              { "input": "node_modules/admin-lte/dist/js/adminlte.js" }
             ]
           },
           "configurations": {

@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+09/04/2018: You need to run 'ng serve --port 4201 --aot' so as to not run into this particular issue: https://github.com/angular/angular/issues/23412. Research https://angular.io/guide/aot-compiler to figure out what --aot means.
 
 ## Code scaffolding
 

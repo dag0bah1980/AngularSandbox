@@ -65,7 +65,7 @@ export class LoginComponent {
   bypassLogin(value){
     this.authService.doBypassLogin(value)
     .then(res => {
-      this.router.navigate(['/']);
+      this.router.navigate(['/auth']);
     }, err => {
       console.log(err);
       this.errorMessage = err.message;
