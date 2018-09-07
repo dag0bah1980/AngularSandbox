@@ -9,6 +9,11 @@ import { HttpClientModule } from '@angular/common/http';
 //routing
 import { authRouting } from './auth.routing';
 import { AuthhomeComponent } from './authhome/authhome.component';
+import { SideNavBarComponent } from './_sitelayout/side-nav-bar/side-nav-bar.component';
+import { TopInfoBarComponent } from './_sitelayout/top-info-bar/top-info-bar.component';
+import { MainContentAreaComponent } from './_sitelayout/main-content-area/main-content-area.component';
+import { SiteFooterComponent } from './_sitelayout/site-footer/site-footer.component';
+import { SideControlBarHiddenComponent } from './_sitelayout/side-control-bar-hidden/side-control-bar-hidden.component';
 
 
 
@@ -20,6 +25,11 @@ import { AuthhomeComponent } from './authhome/authhome.component';
   declarations: [
     AuthComponent,
     AuthhomeComponent,
+    SideNavBarComponent,
+    TopInfoBarComponent,
+    MainContentAreaComponent,
+    SiteFooterComponent,
+    SideControlBarHiddenComponent,
   ]
 })
 export class AuthModule { }
