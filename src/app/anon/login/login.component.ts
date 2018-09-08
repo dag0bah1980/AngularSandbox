@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { AuthService } from '../../core/auth.service';
 import { Router, Params } from '@angular/router';
 
@@ -19,9 +19,11 @@ export class LoginComponent {
   constructor(
     public authService: AuthService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private renderer: Renderer2
   ) {
     this.createForm();
+    this.renderer.addClass(document.body, 'login-page');
   }
 
   createForm() {

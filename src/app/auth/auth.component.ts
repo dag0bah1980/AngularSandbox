@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'angsand-auth',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  constructor(private renderer: Renderer2) { 
+    this.renderer.addClass(document.body, 'hold-transition');
+    this.renderer.addClass(document.body, 'skin-blue');
+    this.renderer.addClass(document.body, 'sidebar-mini'); 
+    this.renderer.removeClass(document.body, 'login-page');
+  }
 
   ngOnInit() {
+    
   }
 
 }
