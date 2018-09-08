@@ -14,6 +14,9 @@ import { TopInfoBarComponent } from './_sitelayout/top-info-bar/top-info-bar.com
 import { MainContentAreaComponent } from './_sitelayout/main-content-area/main-content-area.component';
 import { SiteFooterComponent } from './_sitelayout/site-footer/site-footer.component';
 import { SideControlBarHiddenComponent } from './_sitelayout/side-control-bar-hidden/side-control-bar-hidden.component';
+import { MainContentHeaderComponent } from './_sitelayout/main-content-area/main-content-header/main-content-header.component';
+import { MainContentFooterComponent } from './_sitelayout/main-content-area/main-content-footer/main-content-footer.component';
+
 
 
 
@@ -30,6 +33,9 @@ import { SideControlBarHiddenComponent } from './_sitelayout/side-control-bar-hi
     MainContentAreaComponent,
     SiteFooterComponent,
     SideControlBarHiddenComponent,
+    MainContentHeaderComponent,
+    MainContentFooterComponent,
+
   ]
 })
 export class AuthModule { }

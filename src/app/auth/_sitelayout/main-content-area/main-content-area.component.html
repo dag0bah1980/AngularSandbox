@@ -1,22 +1,6 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <section class="content-header">
-    <h1>
-      Blank page
-      <small>it all starts here</small>
-    </h1>
-    <ol class="breadcrumb">
-      <li>
-        <a href="#">
-          <i class="fa fa-dashboard"></i> Home</a>
-      </li>
-      <li>
-        <a href="#">Examples</a>
-      </li>
-      <li class="active">Blank page</li>
-    </ol>
-  </section>
+  <angsand-main-content-header></angsand-main-content-header>
 
   <!-- Main content -->
   <section class="content">
@@ -36,13 +20,12 @@
         </div>
       </div>
       <div class="box-body">
-        Start creating your amazing application!
+        <router-outlet></router-outlet>
       </div>
       <!-- /.box-body -->
-      <div class="box-footer">
-        Footer
-      </div>
-      <!-- /.box-footer-->
+      
+      <angsand-main-content-footer></angsand-main-content-footer>
+
     </div>
     <!-- /.box -->
 
