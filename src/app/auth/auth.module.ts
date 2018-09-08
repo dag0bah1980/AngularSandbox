@@ -8,7 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 //routing
 import { authRouting } from './auth.routing';
-import { AuthhomeComponent } from './authhome/authhome.component';
+
+//sitelayout
 import { SideNavBarComponent } from './_sitelayout/side-nav-bar/side-nav-bar.component';
 import { TopInfoBarComponent } from './_sitelayout/top-info-bar/top-info-bar.component';
 import { MainContentAreaComponent } from './_sitelayout/main-content-area/main-content-area.component';
@@ -16,6 +17,14 @@ import { SiteFooterComponent } from './_sitelayout/site-footer/site-footer.compo
 import { SideControlBarHiddenComponent } from './_sitelayout/side-control-bar-hidden/side-control-bar-hidden.component';
 import { MainContentHeaderComponent } from './_sitelayout/main-content-area/main-content-header/main-content-header.component';
 import { MainContentFooterComponent } from './_sitelayout/main-content-area/main-content-footer/main-content-footer.component';
+
+//views
+import { AuthhomeComponent } from './views/authhome/authhome.component';
+import { NotesComponent } from './views/notes/notes.component';
+import { SimpleTodoComponent } from './views/simple-todo/simple-todo.component';
+import { LowSecurityComponent } from './views/low-security/low-security.component';
+import { HighSecurityComponent } from './views/high-security/high-security.component';
+import { MixedSecurityOnContentComponent } from './views/mixed-security-on-content/mixed-security-on-content.component';
 
 
 
@@ -35,6 +44,11 @@ import { MainContentFooterComponent } from './_sitelayout/main-content-area/main
     SideControlBarHiddenComponent,
     MainContentHeaderComponent,
     MainContentFooterComponent,
+    NotesComponent,
+    SimpleTodoComponent,
+    LowSecurityComponent,
+    HighSecurityComponent,
+    MixedSecurityOnContentComponent,
 
   ]
 })

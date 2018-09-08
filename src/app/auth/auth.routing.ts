@@ -2,10 +2,51 @@ import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
 import { AuthComponent } from './auth.component';
-import { AuthhomeComponent } from './authhome/authhome.component';
+
+import { AuthhomeComponent } from './views/authhome/authhome.component';
+import { NotesComponent } from './views/notes/notes.component';
+import { SimpleTodoComponent } from './views/simple-todo/simple-todo.component';
+import { LowSecurityComponent } from './views/low-security/low-security.component';
+import { HighSecurityComponent } from './views/high-security/high-security.component';
+import { MixedSecurityOnContentComponent } from './views/mixed-security-on-content/mixed-security-on-content.component';
 
 const authRouterConfig: Routes = [
-    { path: '', component: AuthComponent, pathMatch: 'full' }
+    { 
+      path: '', 
+      component: AuthComponent, 
+        children: [
+          { path: 'home', component: AuthhomeComponent,
+              data: {
+                breadcrumb: "Home"
+              }
+          },
+          { path: 'notes', component: NotesComponent,
+              data: {
+                breadcrumb: "Notes"
+              }
+          },
+          { path: 'simpletodo', component: SimpleTodoComponent,
+              data: {
+                breadcrumb: "Simple Todo"
+              }
+          },
+          { path: 'lowsecurity', component: LowSecurityComponent,
+              data: {
+                breadcrumb: "Low Security"
+              }
+          },
+          { path: 'highsecurity', component: HighSecurityComponent,
+              data: {
+                breadcrumb: "High Security"
+              }
+          },
+          { path: 'mixedsecurity', component: MixedSecurityOnContentComponent,
+              data: {
+                breadcrumb: "Mixed Security"
+              }
+          }
+        ] 
+    }
   ];
 
 export const authRouting: ModuleWithProviders = RouterModule.forChild(authRouterConfig);

@@ -7,7 +7,7 @@ import { LoginComponent } from './anon/login/login.component';
 const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
-  { path: 'auth',  pathMatch: 'full', loadChildren: './auth/auth.module#AuthModule' },
+  { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
 ];
 
 export const rootRouting = RouterModule.forRoot(rootRouterConfig, { useHash: false });
