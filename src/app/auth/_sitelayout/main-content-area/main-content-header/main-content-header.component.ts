@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'angsand-main-content-header',
   templateUrl: './main-content-header.component.html',

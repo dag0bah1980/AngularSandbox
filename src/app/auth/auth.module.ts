@@ -25,6 +25,7 @@ import { SimpleTodoComponent } from './views/simple-todo/simple-todo.component';
 import { LowSecurityComponent } from './views/low-security/low-security.component';
 import { HighSecurityComponent } from './views/high-security/high-security.component';
 import { MixedSecurityOnContentComponent } from './views/mixed-security-on-content/mixed-security-on-content.component';
+import { BreadCrumbComponent } from './_sitelayout/main-content-area/bread-crumb/bread-crumb.component';
 
 
 
@@ -49,6 +50,7 @@ import { MixedSecurityOnContentComponent } from './views/mixed-security-on-conte
     LowSecurityComponent,
     HighSecurityComponent,
     MixedSecurityOnContentComponent,
+    BreadCrumbComponent,
 
   ]
 })

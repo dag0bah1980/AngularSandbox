@@ -1,0 +1,34 @@
+<ol class="breadcrumb">
+  <!--
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li><a href="#">Examples</a></li>
+    <li class="active">Blank page</li>
+  -->
+  <li *ngFor="let breadcrumb of breadcrumbs">
+    <a [routerLink]="[breadcrumb.url, breadcrumb.params]">{{ breadcrumb.label }}</a>
+  </li>
+</ol>
+  
+
+<!-- 
+  <ul class="breadcrumb">
+  <li *ngFor="let breadcrumb of breadcrumbs"
+      class="breadcrumb-item">
+    <a routerLink="{{breadcrumb.url}}">
+      {{ breadcrumb.label }}
+    </a>
+  </li>
+</ul>
+--> 
+<!--
+  <ol class="breadcrumb">
+  <li>
+    <a href="#">
+      <i class="fa fa-dashboard"></i> Home</a>
+  </li>
+  <li>
+    <a href="#">Examples</a>
+  </li>
+  <li class="active">Blank page</li>
+</ol>
+-->

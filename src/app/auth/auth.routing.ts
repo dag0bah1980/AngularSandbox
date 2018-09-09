@@ -44,7 +44,9 @@ const authRouterConfig: Routes = [
               data: {
                 breadcrumb: "Mixed Security"
               }
-          }
+          },
+          { path: '', redirectTo: 'home'
+          },
         ] 
     }
   ];
