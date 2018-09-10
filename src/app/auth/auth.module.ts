@@ -6,8 +6,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
+//pipes
+import { TimedatePipe } from './pipes/timedate.pipe';
+
 //routing
 import { authRouting } from './auth.routing';
+
 
 //sitelayout
 import { SideNavBarComponent } from './_sitelayout/side-nav-bar/side-nav-bar.component';
@@ -17,6 +21,8 @@ import { SiteFooterComponent } from './_sitelayout/site-footer/site-footer.compo
 import { SideControlBarHiddenComponent } from './_sitelayout/side-control-bar-hidden/side-control-bar-hidden.component';
 import { MainContentHeaderComponent } from './_sitelayout/main-content-area/main-content-header/main-content-header.component';
 import { MainContentFooterComponent } from './_sitelayout/main-content-area/main-content-footer/main-content-footer.component';
+import { BreadCrumbComponent } from './_sitelayout/main-content-area/main-content-header/bread-crumb/bread-crumb.component';
+import { MainContentTitleComponent } from './_sitelayout/main-content-area/main-content-header/main-content-title/main-content-title.component';
 
 //views
 import { AuthhomeComponent } from './views/authhome/authhome.component';
@@ -25,7 +31,8 @@ import { SimpleTodoComponent } from './views/simple-todo/simple-todo.component';
 import { LowSecurityComponent } from './views/low-security/low-security.component';
 import { HighSecurityComponent } from './views/high-security/high-security.component';
 import { MixedSecurityOnContentComponent } from './views/mixed-security-on-content/mixed-security-on-content.component';
-import { BreadCrumbComponent } from './_sitelayout/main-content-area/bread-crumb/bread-crumb.component';
+import { TimeWidgetComponent } from './_sitelayout/top-info-bar/time-widget/time-widget.component';
+
 
 
 
@@ -51,6 +58,9 @@ import { BreadCrumbComponent } from './_sitelayout/main-content-area/bread-crumb
     HighSecurityComponent,
     MixedSecurityOnContentComponent,
     BreadCrumbComponent,
+    MainContentTitleComponent,
+    TimedatePipe,
+    TimeWidgetComponent,
 
   ]
 })

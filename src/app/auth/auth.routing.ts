@@ -13,7 +13,7 @@ import { MixedSecurityOnContentComponent } from './views/mixed-security-on-conte
 const authRouterConfig: Routes = [
     { 
       path: '', 
-      component: AuthComponent, 
+      component: AuthComponent,
         children: [
           { path: 'home', component: AuthhomeComponent,
               data: {

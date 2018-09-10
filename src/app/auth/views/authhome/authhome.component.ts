@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute, Router, } from '@angular/router';
 
 @Component({
   selector: 'angsand-authhome',
@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthhomeComponent implements OnInit {
 
-  constructor() { 
-    
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) { 
+    console.log(activatedRoute.snapshot.data['breadcrumb']);
   }
 
   ngOnInit() {
