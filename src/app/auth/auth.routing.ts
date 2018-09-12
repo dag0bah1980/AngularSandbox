@@ -17,12 +17,16 @@ const authRouterConfig: Routes = [
         children: [
           { path: 'home', component: AuthhomeComponent,
               data: {
-                breadcrumb: "Home"
+                breadcrumb: "Home",
+                pagetitle: "Home Page - Page Title",
+                subtitle: "a little subtitle"
               }
           },
           { path: 'notes', component: NotesComponent,
               data: {
-                breadcrumb: "Notes"
+                breadcrumb: "Notes",
+                pagetitle: "Notes - Page Title",
+                subtitle: "a note subtitle"
               }
           },
           { path: 'simpletodo', component: SimpleTodoComponent,
