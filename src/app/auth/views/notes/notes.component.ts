@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewMethodsService } from '../../services/sharedMethods/view-methods.service';
 import { ActivatedRoute, Router, } from '@angular/router';
-import { TitleFromRoutingService } from '../../services/title-from-routing.service';
-
 
 @Component({
   selector: 'angsand-notes',
@@ -10,15 +9,11 @@ import { TitleFromRoutingService } from '../../services/title-from-routing.servi
 })
 export class NotesComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private titleFromRouting: TitleFromRoutingService) {
-    
+  constructor(private _viewMethodsService: ViewMethodsService, private _activatedRoute: ActivatedRoute) {
+    this._viewMethodsService.updateTitle(this._activatedRoute);
    }
 
   ngOnInit() {
-    this.newTitle();
-  }
-
-  newTitle() {
-    this.titleFromRouting.changeTitle(this.activatedRoute.snapshot.data['pagetitle'],this.activatedRoute.snapshot.data['subtitle']);
+    this._viewMethodsService.updateTitle(this._activatedRoute);
   }
 }

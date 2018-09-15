@@ -1,6 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ViewMethodsService } from '../../services/sharedMethods/view-methods.service';
 import { ActivatedRoute, Router, } from '@angular/router';
-import { TitleFromRoutingService } from '../../services/title-from-routing.service';
 
 @Component({
   selector: 'angsand-authhome',
@@ -9,24 +9,13 @@ import { TitleFromRoutingService } from '../../services/title-from-routing.servi
 })
 export class AuthhomeComponent implements OnInit {
 
-  message:string;
+  constructor(private _viewMethodsService: ViewMethodsService, private _activatedRoute: ActivatedRoute) {
+    this._viewMethodsService.updateTitle(this._activatedRoute);
+   }
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private titleFromRouting: TitleFromRoutingService) { 
-    console.log(activatedRoute.snapshot.data['pagetitle']);
-    this.newMessage();
+   ngOnInit() {
+    this._viewMethodsService.updateTitle(this._activatedRoute);
   }
 
-  ngOnInit() {
-    this.titleFromRouting.currentMessage.subscribe(message => this.message = message);
-    this.newMessage();
-    this.newTitle();
-  }
-
-  newMessage() {
-    this.titleFromRouting.changeMessage("Hello from AuthHome")
-  }
-
-  newTitle() {
-    this.titleFromRouting.changeTitle(this.activatedRoute.snapshot.data['pagetitle'],this.activatedRoute.snapshot.data['subtitle']);
-  }
+  
 }

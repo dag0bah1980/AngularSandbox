@@ -3,11 +3,11 @@ import { ViewMethodsService } from '../../services/sharedMethods/view-methods.se
 import { ActivatedRoute, Router, } from '@angular/router';
 
 @Component({
-  selector: 'angsand-mixed-security-on-content',
-  templateUrl: './mixed-security-on-content.component.html',
-  styleUrls: ['./mixed-security-on-content.component.css']
+  selector: 'angsand-firestoresample',
+  templateUrl: './firestoresample.component.html',
+  styleUrls: ['./firestoresample.component.css']
 })
-export class MixedSecurityOnContentComponent implements OnInit {
+export class FirestoresampleComponent implements OnInit {
 
   constructor(private _viewMethodsService: ViewMethodsService, private _activatedRoute: ActivatedRoute) {
     this._viewMethodsService.updateTitle(this._activatedRoute);

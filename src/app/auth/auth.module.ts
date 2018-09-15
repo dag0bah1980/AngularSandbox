@@ -24,6 +24,10 @@ import { MainContentFooterComponent } from './_sitelayout/main-content-area/main
 import { BreadCrumbComponent } from './_sitelayout/main-content-area/main-content-header/bread-crumb/bread-crumb.component';
 import { MainContentTitleComponent } from './_sitelayout/main-content-area/main-content-header/main-content-title/main-content-title.component';
 
+//Guards
+import { AuthGuard } from '../core/auth.guard';
+
+
 //views
 import { AuthhomeComponent } from './views/authhome/authhome.component';
 import { NotesComponent } from './views/notes/notes.component';
@@ -32,7 +36,8 @@ import { LowSecurityComponent } from './views/low-security/low-security.componen
 import { HighSecurityComponent } from './views/high-security/high-security.component';
 import { MixedSecurityOnContentComponent } from './views/mixed-security-on-content/mixed-security-on-content.component';
 import { TimeWidgetComponent } from './_sitelayout/top-info-bar/time-widget/time-widget.component';
-import { AuthGuard } from '../core/auth.guard';
+import { SecuritymgmtComponent } from './views/securitymgmt/securitymgmt.component';
+import { FirestoresampleComponent } from './views/firestoresample/firestoresample.component';
 
 
 
@@ -62,6 +67,8 @@ import { AuthGuard } from '../core/auth.guard';
     MainContentTitleComponent,
     TimedatePipe,
     TimeWidgetComponent,
+    SecuritymgmtComponent,
+    FirestoresampleComponent,
 
   ],
   providers: [
