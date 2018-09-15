@@ -10,14 +10,21 @@ import { LowSecurityComponent } from './views/low-security/low-security.componen
 import { HighSecurityComponent } from './views/high-security/high-security.component';
 import { MixedSecurityOnContentComponent } from './views/mixed-security-on-content/mixed-security-on-content.component';
 
+
+import { AuthGuard } from '../core/auth.guard';
+
 const authRouterConfig: Routes = [
     { 
       path: '', 
       component: AuthComponent,
+      data: {
+        breadcrumb: "Home",
+        pagetitle: "Home Page - Page Title",
+        subtitle: "a little subtitle"
+      },
         children: [
           { path: 'home', component: AuthhomeComponent,
               data: {
-                breadcrumb: "Home",
                 pagetitle: "Home Page - Page Title",
                 subtitle: "a little subtitle"
               }
@@ -31,22 +38,30 @@ const authRouterConfig: Routes = [
           },
           { path: 'simpletodo', component: SimpleTodoComponent,
               data: {
-                breadcrumb: "Simple Todo"
+                breadcrumb: "Simple Todo",
+                pagetitle: "Simple todo",
+                subtitle: "a todo subtitle"
               }
           },
-          { path: 'lowsecurity', component: LowSecurityComponent,
+          { path: 'lowsecurity', component: LowSecurityComponent, canActivate: [AuthGuard],
               data: {
-                breadcrumb: "Low Security"
+                breadcrumb: "Low Security",
+                pagetitle: "low security page",
+                subtitle: "a lowsecurity subtitle"
               }
           },
           { path: 'highsecurity', component: HighSecurityComponent,
               data: {
-                breadcrumb: "High Security"
+                breadcrumb: "High Security",
+                pagetitle: "high security page",
+                subtitle: "a highsecurity subtitle"
               }
           },
           { path: 'mixedsecurity', component: MixedSecurityOnContentComponent,
               data: {
-                breadcrumb: "Mixed Security"
+                breadcrumb: "Mixed Security",
+                pagetitle: "mixed security",
+                subtitle: "a mixed security subtitle"
               }
           },
           { path: '', redirectTo: 'home'

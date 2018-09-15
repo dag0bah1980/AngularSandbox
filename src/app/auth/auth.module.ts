@@ -32,6 +32,7 @@ import { LowSecurityComponent } from './views/low-security/low-security.componen
 import { HighSecurityComponent } from './views/high-security/high-security.component';
 import { MixedSecurityOnContentComponent } from './views/mixed-security-on-content/mixed-security-on-content.component';
 import { TimeWidgetComponent } from './_sitelayout/top-info-bar/time-widget/time-widget.component';
+import { AuthGuard } from '../core/auth.guard';
 
 
 
@@ -62,6 +63,9 @@ import { TimeWidgetComponent } from './_sitelayout/top-info-bar/time-widget/time
     TimedatePipe,
     TimeWidgetComponent,
 
+  ],
+  providers: [
+    AuthGuard
   ]
 })
 export class AuthModule { }

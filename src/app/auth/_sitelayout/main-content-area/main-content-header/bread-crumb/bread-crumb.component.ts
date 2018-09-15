@@ -16,11 +16,20 @@ export class BreadCrumbComponent implements OnInit {
   public breadcrumbs: IBreadcrumb[];
 
   constructor(private activatedRoute: ActivatedRoute,
-    private router: Router) { this.breadcrumbs = []; }
+    private router: Router) { 
+      this.breadcrumbs = []; 
+      this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
+        //set breadcrumbs
+        let root: ActivatedRoute = this.activatedRoute.root;
+        //console.log(this.activatedRoute.root);
+        //console.log(this.activatedRoute.firstChild);
+        this.breadcrumbs = this.getBreadcrumbs(root);
+      });
+    }
 
   ngOnInit() {
 
-
+    
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
       //set breadcrumbs
       let root: ActivatedRoute = this.activatedRoute.root;
@@ -64,11 +73,11 @@ export class BreadCrumbComponent implements OnInit {
       }
 
       //get the route's URL segment
-      let routeURL: string = child.snapshot.url.map(segment => segment.path).join("/");
+      let routeURL: string = child.snapshot.url.map(segment => segment.path).join("/auth");
 
       //append route URL to URL
       //url += `/${routeURL}`;
-      url += '/${routeURL}';
+      url += `/${routeURL}`;
 
       //add breadcrumb
       let breadcrumb: IBreadcrumb = {

@@ -8,6 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 //routing
 import { rootRouting } from './app.routing';
 
+//guards
+import { AuthGuard } from './core/auth.guard';
+
 //modules
 import { AuthModule } from './auth/auth.module';
 
@@ -19,6 +22,8 @@ import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AuthService } from './core/auth.service';
+
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './anon/login/login.component';
@@ -40,6 +45,7 @@ import { LoginComponent } from './anon/login/login.component';
   providers: [
     AuthService,
     AuthModule,
+    AuthGuard
 
   ],
   bootstrap: [AppComponent]

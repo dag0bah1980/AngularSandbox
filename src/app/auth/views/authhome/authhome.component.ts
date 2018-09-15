@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router, } from '@angular/router';
 import { TitleFromRoutingService } from '../../services/title-from-routing.service';
 
