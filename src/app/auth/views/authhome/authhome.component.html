@@ -1,3 +1,19 @@
 <p>
   authhome works!
 </p>
+
+<ul *ngFor="let user of users | async">
+  <li>
+    <strong>{{ user.username}}</strong>
+    <br>
+    <strong>{{ user.id}}</strong>
+    <br>
+    {{user.firstname}}
+    <br>
+    {{user.lastname}}
+    <br>
+    {{user.email}}
+    <br>
+    {{user.birthday.toDate()}}
+  </li>
+</ul>
