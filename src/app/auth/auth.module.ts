@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { AuthComponent } from './auth.component';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 //pipes
@@ -38,6 +37,11 @@ import { MixedSecurityOnContentComponent } from './views/mixed-security-on-conte
 import { TimeWidgetComponent } from './_sitelayout/top-info-bar/time-widget/time-widget.component';
 import { SecuritymgmtComponent } from './views/securitymgmt/securitymgmt.component';
 import { FirestoresampleComponent } from './views/firestoresample/firestoresample.component';
+import { ReadFirestoreRecordComponent } from './views/read-firestore-record/read-firestore-record.component';
+import { CreateFirestoreRecordComponent } from './views/create-firestore-record/create-firestore-record.component';
+import { UpdateFirestoreRecordComponent } from './views/update-firestore-record/update-firestore-record.component';
+import { DeletePermFirestoreRecordComponent } from './views/delete-perm-firestore-record/delete-perm-firestore-record.component';
+import { DeleteLogicalFirestoreRecordComponent } from './views/delete-logical-firestore-record/delete-logical-firestore-record.component';
 
 
 
@@ -46,7 +50,7 @@ import { FirestoresampleComponent } from './views/firestoresample/firestoresampl
 @NgModule({
   imports: [
     CommonModule,
-    authRouting
+    authRouting,
   ],
   declarations: [
     AuthComponent,
@@ -69,6 +73,11 @@ import { FirestoresampleComponent } from './views/firestoresample/firestoresampl
     TimeWidgetComponent,
     SecuritymgmtComponent,
     FirestoresampleComponent,
+    ReadFirestoreRecordComponent,
+    CreateFirestoreRecordComponent,
+    UpdateFirestoreRecordComponent,
+    DeletePermFirestoreRecordComponent,
+    DeleteLogicalFirestoreRecordComponent,
 
   ],
   providers: [

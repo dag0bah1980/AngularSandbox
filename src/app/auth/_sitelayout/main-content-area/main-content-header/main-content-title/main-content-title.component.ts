@@ -11,12 +11,12 @@ export class MainContentTitleComponent implements OnInit {
   PageTitle: string;
   SubTitle: string;
 
-  message:string;
+
   
   constructor(private titleFromRouting: TitleFromRoutingService) { }
 
   ngOnInit() {
-    this.titleFromRouting.currentMessage.subscribe(message => this.message = message);
+
     this.titleFromRouting.pageTitleMessage.subscribe(PageTitle => this.PageTitle = PageTitle);
     this.titleFromRouting.subTitleMessage.subscribe(SubTitle => this.SubTitle = SubTitle);
   }

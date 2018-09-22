@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewMethodsService } from '../../services/sharedMethods/view-methods.service';
-import { ActivatedRoute, Router, } from '@angular/router';
+import { ActivatedRoute, Router,ActivatedRouteSnapshot } from '@angular/router';
 
 
 import { AngularFirestoreDocument,  AngularFirestore,  AngularFirestoreCollection} from "angularfire2/firestore";
@@ -28,11 +28,11 @@ export class FirestoresampleComponent implements OnInit {
   users: Observable<Users[]>;
 
   constructor(private _viewMethodsService: ViewMethodsService, private _activatedRoute: ActivatedRoute, private afs: AngularFirestore) {
-    this._viewMethodsService.updateTitle(this._activatedRoute);
+    this._viewMethodsService.updateTitleNew(_activatedRoute);
    }
 
   ngOnInit() {
-    this._viewMethodsService.updateTitle(this._activatedRoute);
+    this._viewMethodsService.updateTitleNew(this._activatedRoute);
     this.usersCol = this.afs.collection('Users');
     this.users = this.usersCol.valueChanges();
   }

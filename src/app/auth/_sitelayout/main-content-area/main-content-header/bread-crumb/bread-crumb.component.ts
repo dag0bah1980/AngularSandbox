@@ -73,7 +73,7 @@ export class BreadCrumbComponent implements OnInit {
       }
 
       //get the route's URL segment
-      let routeURL: string = child.snapshot.url.map(segment => segment.path).join("/auth");
+      let routeURL: string = child.snapshot.url.map(segment => segment.path).join("/");
 
       //append route URL to URL
       //url += `/${routeURL}`;
