@@ -77,14 +77,15 @@ const authRouterConfig: Routes = [
                 subtitle: "a security mgmt subtitle"
               }
           },
-          { path: 'firestoresample', component: FirestoresampleComponent, canActivate: [AuthGuard],
+          { path: 'firestoresample', component: FirestoresampleComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard],
               data: {
                 breadcrumb: "FireStore Sample",
                 pagetitle: "firestore sample",
                 subtitle: "a firestore sample subtitle"
               },
+              
               children: [
-                { path: 'CreateFSRecord', component: CreateFirestoreRecordComponent, canActivate: [AuthGuard],
+                { path: 'CreateFSRecord', component: CreateFirestoreRecordComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard],
                     data: {
                       breadcrumb: "Create",
                       pagetitle: "Create a Firestore Record",
