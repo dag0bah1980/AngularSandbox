@@ -1,3 +1,14 @@
 <p>
   read-firestore-record works!
 </p>
+<ul *ngFor="let user of users | async">
+  <li>
+    <strong>{{ user.username}}</strong>
+    <br>
+    {{user.firstname}}
+    <br>
+    {{user.lastname}}
+    <br>
+    {{user.email}}
+  </li>
+</ul>

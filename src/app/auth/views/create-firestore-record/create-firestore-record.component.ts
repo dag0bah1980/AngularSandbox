@@ -10,12 +10,14 @@ import { ActivatedRoute, Router, ActivatedRouteSnapshot} from '@angular/router';
 export class CreateFirestoreRecordComponent implements OnInit {
 
   constructor(private _viewMethodsService: ViewMethodsService, private _activatedRoute: ActivatedRoute) {
-    this._viewMethodsService.updateTitleNew(this._activatedRoute);
+    this._viewMethodsService.updateTitle(this._activatedRoute);
+    console.log('childlength:'+_activatedRoute.children.length);
    }
 
    ngOnInit() {
     
-    this._viewMethodsService.updateTitleNew(this._activatedRoute);
+    this._viewMethodsService.updateTitle(this._activatedRoute);
+    console.log('childlength:'+this._activatedRoute.children.length);
   }
 
 }

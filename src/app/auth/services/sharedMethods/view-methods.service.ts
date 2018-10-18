@@ -15,11 +15,11 @@ export class ViewMethodsService {
 
   updateTitle(actRoute: ActivatedRoute) {
     this.titleFromRouting.changeTitle(actRoute.snapshot.data['pagetitle'],actRoute.snapshot.data['subtitle']);
+
   }
 
   updateTitleNew(actRoute: ActivatedRoute) {
     //console.log(activatedRoute.snapshot);
-    console.log('activatedroutesnapshot1:'+actRoute.snapshot.firstChild);
     //console.log(activatedRoute.snapshot.data['pagetitle']);
     //console.log(activatedRoute.snapshot.firstChild.data['pagetitle']);
     //var children = actRoute.children;
