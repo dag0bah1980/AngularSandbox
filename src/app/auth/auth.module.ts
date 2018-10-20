@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthComponent } from './auth.component';
+import { FormsModule } from '@angular/forms';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -42,6 +43,7 @@ import { CreateFirestoreRecordComponent } from './views/create-firestore-record/
 import { UpdateFirestoreRecordComponent } from './views/update-firestore-record/update-firestore-record.component';
 import { DeletePermFirestoreRecordComponent } from './views/delete-perm-firestore-record/delete-perm-firestore-record.component';
 import { DeleteLogicalFirestoreRecordComponent } from './views/delete-logical-firestore-record/delete-logical-firestore-record.component';
+import { ReadFirestoreRecordLookupComponent } from './views/read-firestore-record-lookup/read-firestore-record-lookup.component';
 
 
 
@@ -51,6 +53,7 @@ import { DeleteLogicalFirestoreRecordComponent } from './views/delete-logical-fi
   imports: [
     CommonModule,
     authRouting,
+    FormsModule
   ],
   declarations: [
     AuthComponent,
@@ -78,6 +81,7 @@ import { DeleteLogicalFirestoreRecordComponent } from './views/delete-logical-fi
     UpdateFirestoreRecordComponent,
     DeletePermFirestoreRecordComponent,
     DeleteLogicalFirestoreRecordComponent,
+    ReadFirestoreRecordLookupComponent,
 
   ],
   providers: [

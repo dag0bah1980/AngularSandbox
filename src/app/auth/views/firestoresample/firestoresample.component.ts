@@ -17,7 +17,7 @@ export class FirestoresampleComponent implements OnInit {
 
   
 
-  constructor(private _viewMethodsService: ViewMethodsService, private _activatedRoute: ActivatedRoute) {
+  constructor(private _viewMethodsService: ViewMethodsService, public _activatedRoute: ActivatedRoute) {
     this._viewMethodsService.updateTitleNew(_activatedRoute);
 
    }

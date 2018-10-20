@@ -12,6 +12,7 @@ import { MixedSecurityOnContentComponent } from './views/mixed-security-on-conte
 import { SecuritymgmtComponent } from './views/securitymgmt/securitymgmt.component';
 import { FirestoresampleComponent } from './views/firestoresample/firestoresample.component';
 import { ReadFirestoreRecordComponent } from './views/read-firestore-record/read-firestore-record.component';
+import { ReadFirestoreRecordLookupComponent } from './views/read-firestore-record-lookup/read-firestore-record-lookup.component';
 import { CreateFirestoreRecordComponent } from './views/create-firestore-record/create-firestore-record.component';
 import { UpdateFirestoreRecordComponent } from './views/update-firestore-record/update-firestore-record.component';
 import { DeletePermFirestoreRecordComponent } from './views/delete-perm-firestore-record/delete-perm-firestore-record.component';
@@ -96,6 +97,13 @@ const authRouterConfig: Routes = [
                     data: {
                       breadcrumb: "Read",
                       pagetitle: "Read a Firestore Record",
+                      subtitle: ""
+                    }
+                },
+                { path: 'ReadFSRecordLookup', component: ReadFirestoreRecordLookupComponent, canActivate: [AuthGuard],
+                    data: {
+                      breadcrumb: "Read - Lookup",
+                      pagetitle: "Read a Firestore Record - Lookup",
                       subtitle: ""
                     }
                 },
