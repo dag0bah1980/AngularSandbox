@@ -7,18 +7,16 @@ import { AngularFirestoreDocument,  AngularFirestore,  AngularFirestoreCollectio
 import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators'
 
+import { FirestoreExtendedService } from "../../services/data/firestore-extended.service"
 
 import * as FSdata from '../../models/fire-base-data'
 
-
-interface Users {
-  id: string;
-  birthday: Date;
-  email: string;
-  firstname: string;
-  lastname: string;
-  username: string;
+class User {
+  constructor(public username: string, public firstname: string, public lastname: string, public email: string, public birthday?: Date, public id?: string) {
+  }
 }
+
+
 @Component({
   selector: 'angsand-read-firestore-record-lookup',
   templateUrl: './read-firestore-record-lookup.component.html',
@@ -26,79 +24,38 @@ interface Users {
 })
 export class ReadFirestoreRecordLookupComponent implements OnInit {
 
-  //From: https://coursetro.com/posts/code/94/Use-Angular-with-Google's-Cloud-Firestore---Tutorial
-  //usersCollection: AngularFirestoreCollection<Users>;
-  //users: Observable<Users[]>;
-
-  public usersCollection: AngularFirestoreCollection<FSdata.Users>;
-  public users: Observable<FSdata.Users[]>;
+  //https://angular-templates.io/tutorials/about/angular-crud-with-firebase
+  items: Array<any>;
 
   usernamestring: string ="";
   idstring: string="";
   show: boolean = true;
 
-  constructor(private _viewMethodsService: ViewMethodsService, private _activatedRoute: ActivatedRoute, private afs: AngularFirestore) { 
+  constructor(private _viewMethodsService: ViewMethodsService, private _activatedRoute: ActivatedRoute, private afs: AngularFirestore, private _FirestoreExtendedService: FirestoreExtendedService) { 
     this._viewMethodsService.updateTitle(this._activatedRoute);
   }
 
   ngOnInit() {
 
     this._viewMethodsService.updateTitle(this._activatedRoute);
-    this.usersCollection = this.afs.collection<FSdata.Users>('Users', ref => ref.where('username', '==', this.usernamestring)); //Users is the name of the collection found in FireStore
-    this.users = this.usersCollection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
-            const data = a.payload.doc.data() as FSdata.Users;
-            const id = a.payload.doc.id;
-            return { id, ...data };
-        });
-        })
-    );
-    
-    /*this.afs.firestore.collection('users')
-        .where('id','==', 'bJECHgn8dL18bAoZli07')
-        .get()
-        .then(querySnapshot => {
-                querySnapshot.forEach(function (doc) {
-                      console.log(doc.id); // id of doc
-                      console.log(doc.data()); // data of doc
-                })
-         });
-    */
-
-    //this.usersCollection = this.afs.collection('Users');
-    //this.users = this.usersCollection.valueChanges();
+    this.getData();
   }
+
+  getData(){
+    this._FirestoreExtendedService.getUsers()
+    .subscribe(result => {
+      this.items = result;
+    })
+  }
+
 
   searchByUsername(){
     console.log(this.usernamestring);
-    this.usersCollection = this.afs.collection<FSdata.Users>('Users', ref => ref.where('username', '==', this.usernamestring)); //Users is the name of the collection found in FireStore
-    this.users = this.usersCollection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
-            const data = a.payload.doc.data() as FSdata.Users;
-            const id = a.payload.doc.id;
-            return { id, ...data };
-        });
-        })
-    );
   }
 
   
   searchByID(){
     console.log(this.idstring);
-    this.usersCollection = this.afs.collection('Users'); //Users is the name of the collection found in FireStore
-    this.users = this.usersCollection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
-            const data = a.payload.doc.data() as FSdata.Users;
-            const id = a.payload.doc.id;
-            return { id, ...data };
-        });
-        })
-    );
-
-
-    
+        
   }
 }

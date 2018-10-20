@@ -5,17 +5,17 @@
 <input type="text" [(ngModel)]="usernamestring" name="username" placeholder="Username..">
 <input type="submit" value="Search" (click)="searchByUsername()">
 
-<ul *ngFor="let user of users | async">
+<ul *ngFor="let item of items">
   <li>
-    <strong>{{ user.id}}</strong>
+    <strong>{{ item.payload.doc.id}}</strong>
     <br>
-    {{ user.username}}
+    {{ item.payload.doc.data().username}}
     <br>
-    {{user.firstname}}
+    {{ item.payload.doc.data().firstname}}
     <br>
-    {{user.lastname}}
+    {{ item.payload.doc.data().lastname}}
     <br>
-    {{user.email}}
+    {{ item.payload.doc.data().email}}
   </li>
 </ul>
 
