@@ -1,3 +1,26 @@
 <p>
   create-firestore-record works!
 </p>
+
+<input type="text" [(ngModel)]="usernamestring" name="username" placeholder="Username.."><br />
+<input type="text" [(ngModel)]="firstnamestring" name="firstname" placeholder="First name.."><br />
+<input type="text" [(ngModel)]="lastnamestring" name="lastname" placeholder="Last name.."><br />
+<input type="text" [(ngModel)]="emailstring" name="email" placeholder="Email.."><br />
+
+<input type="submit" value="Submit" (click)="addUser()">
+
+<ul *ngFor="let user of users | async">
+  <li>
+    <strong>{{ user.id}}</strong>
+    <br>
+    {{ user.username}}
+    <br>
+    {{user.firstname}}
+    <br>
+    {{user.lastname}}
+    <br>
+    {{user.email}}
+  </li>
+</ul>
+
+<input type="submit" value="Refresh" (click)="refresh()">
