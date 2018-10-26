@@ -3,16 +3,16 @@ import { ViewMethodsService } from '../../services/sharedMethods/view-methods.se
 import { ActivatedRoute, Router,ActivatedRouteSnapshot } from '@angular/router';
 
 
-import { AngularFirestoreDocument,  AngularFirestore,  AngularFirestoreCollection} from "angularfire2/firestore";
-import { Observable } from 'rxjs';
+import { AngularFirestore,  } from "angularfire2/firestore";
+import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators'
 
-interface Users {
-  birthday: Date;
-  email: string;
-  firstname: string;
-  lastname: string;
-  username: string;
+import { FirestoreExtendedService } from "../../services/data/firestore-extended.service"
+
+
+class User {
+  constructor(public username: string, public firstname: string, public lastname: string, public email: string, public birthday?: Date, public id?: string) {
+  }
 }
 
 @Component({
@@ -22,19 +22,27 @@ interface Users {
 })
 export class ReadFirestoreRecordComponent implements OnInit {
 
-  //From: https://coursetro.com/posts/code/94/Use-Angular-with-Google's-Cloud-Firestore---Tutorial
-  usersCol: AngularFirestoreCollection<Users>;
-  users: Observable<Users[]>;
+  //https://angular-templates.io/tutorials/about/angular-crud-with-firebase
+  items: Array<any>;
+
+  usernamestring: string ="";
+  idstring: string="";
   show: boolean = true;
 
-  constructor(private _viewMethodsService: ViewMethodsService, private _activatedRoute: ActivatedRoute, private afs: AngularFirestore) { 
+  constructor(private _viewMethodsService: ViewMethodsService, private _activatedRoute: ActivatedRoute, private afs: AngularFirestore, private _FirestoreExtendedService: FirestoreExtendedService) { 
     this._viewMethodsService.updateTitle(this._activatedRoute);
   }
 
   ngOnInit() {
+
     this._viewMethodsService.updateTitle(this._activatedRoute);
-    this.usersCol = this.afs.collection('Users');
-    this.users = this.usersCol.valueChanges();
+    this.getData();
   }
 
+  getData(){
+    this._FirestoreExtendedService.getUsers()
+    .subscribe(result => {
+      this.items = result;
+    })
+  }
 }

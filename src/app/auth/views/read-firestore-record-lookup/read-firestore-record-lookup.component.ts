@@ -3,13 +3,12 @@ import { ViewMethodsService } from '../../services/sharedMethods/view-methods.se
 import { ActivatedRoute, Router,ActivatedRouteSnapshot } from '@angular/router';
 
 
-import { AngularFirestoreDocument,  AngularFirestore,  AngularFirestoreCollection} from "angularfire2/firestore";
+import { AngularFirestore,  } from "angularfire2/firestore";
 import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators'
 
 import { FirestoreExtendedService } from "../../services/data/firestore-extended.service"
 
-import * as FSdata from '../../models/fire-base-data'
 
 class User {
   constructor(public username: string, public firstname: string, public lastname: string, public email: string, public birthday?: Date, public id?: string) {
@@ -51,11 +50,18 @@ export class ReadFirestoreRecordLookupComponent implements OnInit {
 
   searchByUsername(){
     console.log(this.usernamestring);
+    this._FirestoreExtendedService.getUserByUsername(this.usernamestring)
+    .subscribe(result => {
+      this.items = result;
+    })  
   }
 
   
   searchByID(){
-    console.log(this.idstring);
-        
+    console.log(this.idstring);    
+    this._FirestoreExtendedService.getUserByDocID(this.idstring)
+    .subscribe(result => {
+      this.items = result;
+    }) ;
   }
 }
