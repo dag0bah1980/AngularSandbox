@@ -40,6 +40,16 @@ export class ReadFirestoreRecordLookupComponent implements OnInit {
     this.getData();
   }
 
+  //C(reate) in CRUD functions
+  createUser(value){
+    return this.afs.collection('Users').add({
+      name: value.name,
+      surname: value.surname,
+      age: parseInt(value.age)
+    });
+  }
+
+  //R(ead) in CRUD functions
   getData(){
     this._FirestoreExtendedService.getUsers()
     .subscribe(result => {

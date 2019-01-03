@@ -57,21 +57,7 @@ export class CreateFirestoreRecordComponent implements OnInit {
   
 
   addUser(){
-    //console.log(this.usernamestring)
-    this.afs.collection('Users').add({
-      username: this.usernamestring,
-      firstname: this.firstnamestring,
-      lastname: this.lastnamestring,
-      email: this.emailstring,
-    }).then((docRef) => {
-      this.usersCollection.doc(docRef.id).update({
-        prodid: docRef.id
-      })
-    })
- 
-      .catch((err) => {
-      console.log(err);
-    }) 
+    
   }
   
 
