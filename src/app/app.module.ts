@@ -15,6 +15,7 @@ import { AuthGuard } from './core/auth.guard';
 import { AuthModule } from './auth/auth.module';
 
 import { AngularFireModule } from 'angularfire2';
+//import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
@@ -22,6 +23,7 @@ import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AuthService } from './core/auth.service';
+
 
 
 

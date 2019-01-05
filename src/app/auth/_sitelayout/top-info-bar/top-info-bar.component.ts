@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-
+import { AuthService } from '../../../core/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'angsand-top-info-bar',
@@ -9,13 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopInfoBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthService, private router: Router) { }
 
 
   ngOnInit() {
 
   }
 
-  
+  tryLogout() {    
+    console.log("Logout!");
+    this.auth.doNewLogout()
+    this.router.navigate(['/login']);
+  }
 
 }

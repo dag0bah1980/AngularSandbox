@@ -1,14 +1,26 @@
 import { Injectable } from "@angular/core";
 //import 'rxjs/add/operator/toPromise';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+
 import * as firebase from 'firebase/app';
+import { Observable } from "rxjs";
 
 @Injectable()
 export class AuthService {
 
+  private user: firebase.User;
+
   constructor(
    public afAuth: AngularFireAuth
- ){}
+  ){
+    afAuth.authState.subscribe(user => {
+
+      this.user = user;
+      console.log(this.user);
+		});
+  }
 
   doFacebookLogin(){
     return new Promise<any>((resolve, reject) => {
@@ -72,6 +84,16 @@ export class AuthService {
     })
   }
 
+  doEmailLogin(value){
+    //debugger
+    console.log('Sign in with email');
+    return new Promise<any>((resolve, reject) => { this.afAuth.auth.signInWithEmailAndPassword(value.email, value.password)
+      .then(res => {
+        resolve(res);
+      }, err => reject(err))
+    })
+  }
+
   doLogout(){
     return new Promise((resolve, reject) => {
       if(firebase.auth().currentUser){
@@ -82,6 +104,10 @@ export class AuthService {
         reject();
       }
     });
+  }
+
+  doNewLogout(){
+    this.afAuth.auth.signOut();
   }
 
   doBypassLogin(value){
