@@ -23,15 +23,16 @@ export class AuthGuard implements CanActivate, CanActivateChild {
             console.log("access denied")
             this.router.navigate(['/login']);
           } else {
-            console.log("good!?@")
+            //console.log("good!?@")
+            console.log("CanActivate - Guard Activated");
+            console.log(state);
+            console.log(next.data['pagetitle']);
           }
         }
         )
       )
        
-      console.log("CanActivate - Guard Activated");
-      console.log(state);
-      console.log(next.data['pagetitle']);
+      
       //debugger
       return true;
 

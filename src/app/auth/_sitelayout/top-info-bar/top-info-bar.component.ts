@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../core/auth.service';
+import { UserService } from '../../../core/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class TopInfoBarComponent implements OnInit {
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router, private user: UserService) { }
 
 
   ngOnInit() {
@@ -22,4 +23,8 @@ export class TopInfoBarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  getCurrentUser(){
+    console.log("Current User:");
+    console.log(this.user.getCurrentUser());
+  }
 }
