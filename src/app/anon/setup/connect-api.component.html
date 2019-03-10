@@ -1,0 +1,31 @@
+
+  <div class="login-box">
+    <div class="login-logo">
+      <a href="../../index2.html"><b>Angular</b>Sandbox</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+      <p class="login-box-msg">Change the Data API URL</p>
+
+      <form [formGroup]="DataAPIForm">
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" placeholder="http://localhost:60712" formControlName="DataAPIURL">
+          <span class="glyphicon glyphicon-key form-control-feedback"></span>
+        </div>
+        <div>
+          <label class="error">{{errorMessage}}</label>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <button type="submit" (click)="test()" class="btn btn-primary btn-block btn-flat">Save</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+  
+
+      <a href="/login" class="text-center">Go back to login</a>
+  
+    </div>
+    <!-- /.login-box-body -->
+  </div>

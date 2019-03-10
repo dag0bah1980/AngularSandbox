@@ -2,6 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
 import { LoginComponent } from './anon/login/login.component';
+import { ConnectApiComponent } from './anon/setup/connect-api.component';
 
 import { AuthGuard } from './core/auth.guard';
 
@@ -9,6 +10,7 @@ import { AuthGuard } from './core/auth.guard';
 const rootRouterConfig: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
+  { path: 'connect', component: ConnectApiComponent, pathMatch: 'full' },
   { path: 'auth', loadChildren: './auth/auth.module#AuthModule', canActivate: [AuthGuard] },
 ];
 

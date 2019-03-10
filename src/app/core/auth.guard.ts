@@ -34,7 +34,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
        
       
       //debugger
-      return true;
+      //return true;
 
   }
 

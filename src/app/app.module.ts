@@ -29,11 +29,13 @@ import { AuthService } from './core/auth.service';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './anon/login/login.component';
+import { ConnectApiComponent } from './anon/setup/connect-api.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ConnectApiComponent
   ],
   imports: [
     BrowserModule,
