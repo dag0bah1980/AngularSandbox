@@ -9,7 +9,7 @@
 
       <form [formGroup]="DataAPIForm">
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" placeholder="http://localhost:60712" formControlName="DataAPIURL">
+          <input type="text" class="form-control" placeholder="http://[url]:(port)/" formControlName="DataAPIURLvalue">
           <span class="glyphicon glyphicon-key form-control-feedback"></span>
         </div>
         <div>
@@ -17,7 +17,7 @@
         </div>
         <div class="row">
           <div class="col-xs-4">
-            <button type="submit" (click)="test()" class="btn btn-primary btn-block btn-flat">Save</button>
+            <button type="submit" (click)="updateDataAPIURL()" class="btn btn-primary btn-block btn-flat">Save</button>
           </div>
           <!-- /.col -->
         </div>

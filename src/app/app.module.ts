@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
-
-
 //routing
 import { rootRouting } from './app.routing';
 
@@ -22,6 +20,7 @@ import { environment } from '../environments/environment';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
+//services
 import { AuthService } from './core/auth.service';
 
 

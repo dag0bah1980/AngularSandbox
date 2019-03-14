@@ -4,6 +4,7 @@ import { Router, Params } from '@angular/router';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import SystemGlobalVars from '../../../SystemGlobalVars.json';
 
 @Component({
   selector: 'angsand-login',
@@ -24,6 +25,7 @@ export class LoginComponent {
   ) {
     this.createForm();
     this.renderer.addClass(document.body, 'login-page');
+    console.log(SystemGlobalVars[0].BaseDataAPIURL);
   }
 
   createForm() {

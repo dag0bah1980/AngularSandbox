@@ -1,7 +1,9 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "baseUrl": "src",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -16,6 +18,7 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    
   }
 }

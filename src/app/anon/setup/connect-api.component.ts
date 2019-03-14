@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'angsand-connect-api',
   templateUrl: './connect-api.component.html',
@@ -8,20 +9,24 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ConnectApiComponent implements OnInit {
 
+  private DataAPIURL: string;
   DataAPIForm: FormGroup;
+  errorMessage: string = '';
 
   constructor(private fb: FormBuilder) {
-    this.createForm();
+  
+    this.createForm();  
+
    }
 
   createForm() {
     this.DataAPIForm = this.fb.group({
-        DataAPIURL: ['', Validators.required ]
+        DataAPIURLvalue: [this.DataAPIURL, Validators.required ]
     });
   }
 
-  test() {
-
+  updateDataAPIURL() {
+    
   }
 
   ngOnInit() {
