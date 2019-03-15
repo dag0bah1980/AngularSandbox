@@ -96,9 +96,9 @@
       </li>
 
 
-      <li class="treeview" id="firestoresampletree">
-        <!--<a routerLink="/auth/firestoresample">-->
-        <a (click)="onNavigateClick('firestoresample','firestoresampletree')">
+      <li class="treeview" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" id="firestoresampletree">
+        <a routerLink="/auth/firestoresample">
+        <!--<a (click)="onNavigateClick('firestoresample','firestoresampletree')">-->
           <i class="fa fa-book"></i>
           <span>Firestore Samples</span>
           <span class="pull-right-container">
