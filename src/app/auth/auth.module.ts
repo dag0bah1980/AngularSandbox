@@ -44,6 +44,7 @@ import { UpdateFirestoreRecordComponent } from './views/update-firestore-record/
 import { DeletePermFirestoreRecordComponent } from './views/delete-perm-firestore-record/delete-perm-firestore-record.component';
 import { DeleteLogicalFirestoreRecordComponent } from './views/delete-logical-firestore-record/delete-logical-firestore-record.component';
 import { ReadFirestoreRecordLookupComponent } from './views/read-firestore-record-lookup/read-firestore-record-lookup.component';
+import { StyleguideComponent } from './views/styleguide/styleguide.component';
 
 
 
@@ -82,6 +83,7 @@ import { ReadFirestoreRecordLookupComponent } from './views/read-firestore-recor
     DeletePermFirestoreRecordComponent,
     DeleteLogicalFirestoreRecordComponent,
     ReadFirestoreRecordLookupComponent,
+    StyleguideComponent,
 
   ],
   providers: [
