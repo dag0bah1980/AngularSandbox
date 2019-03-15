@@ -19,6 +19,7 @@ import { DeletePermFirestoreRecordComponent } from './views/delete-perm-firestor
 import { DeleteLogicalFirestoreRecordComponent } from './views/delete-logical-firestore-record/delete-logical-firestore-record.component';
 
 import { StyleguideComponent } from './views/styleguide/styleguide.component';
+import { StandardviewsetupComponent } from './views/standardviewsetup/standardviewsetup.component';
 
 import { AuthGuard } from '../core/auth.guard';
 
@@ -85,7 +86,16 @@ const authRouterConfig: Routes = [
                 breadcrumb: "Style Guide",
                 pagetitle: "Style Guide",
                 subtitle: "a page to demo the various components used throughout"
-              }
+              },
+              children: [
+                { path: 'standardviewsetup', component: StandardviewsetupComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard],
+                    data: {
+                      breadcrumb: "Standard View Setup",
+                      pagetitle: "Standard View Setup",
+                      subtitle: "Standard View Setup subtitle"
+                    }
+                },
+              ]
           },
           { path: 'firestoresample', component: FirestoresampleComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard],
               data: {

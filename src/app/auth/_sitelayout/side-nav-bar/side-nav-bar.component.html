@@ -78,16 +78,27 @@
         </a>
       </li>
 
-      <li>
-        <a routerLink="/auth/styleguide">
+      <li class="treeview" id="styleguidetree">
+        <a (click)="onNavigateClick('styleguide','styleguidetree')">
           <i class="fa fa-book"></i>
           <span>Style Guide</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
         </a>
+        <ul class="treeview-menu">
+          <li>
+            <a routerLink="/auth/styleguide/standardviewsetup">
+              <i class="fa fa-plus"></i>Standard View SEtup
+            </a>
+          </li>
+        </ul>
       </li>
 
 
-      <li class="treeview">
-        <a routerLink="/auth/firestoresample">
+      <li class="treeview" id="firestoresampletree">
+        <!--<a routerLink="/auth/firestoresample">-->
+        <a (click)="onNavigateClick('firestoresample','firestoresampletree')">
           <i class="fa fa-book"></i>
           <span>Firestore Samples</span>
           <span class="pull-right-container">
