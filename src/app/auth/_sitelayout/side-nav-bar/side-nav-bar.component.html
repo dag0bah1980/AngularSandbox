@@ -78,8 +78,8 @@
         </a>
       </li>
 
-      <li class="treeview" id="styleguidetree">
-        <a (click)="onNavigateClick('styleguide','styleguidetree')">
+      <li class="treeview" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a routerLink="/auth/styleguide">
           <i class="fa fa-book"></i>
           <span>Style Guide</span>
           <span class="pull-right-container">
@@ -96,7 +96,7 @@
       </li>
 
 
-      <li class="treeview" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" id="firestoresampletree">
+      <li class="treeview" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         <a routerLink="/auth/firestoresample">
         <!--<a (click)="onNavigateClick('firestoresample','firestoresampletree')">-->
           <i class="fa fa-book"></i>

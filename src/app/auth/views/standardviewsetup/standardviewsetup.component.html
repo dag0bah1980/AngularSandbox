@@ -1,3 +1,36 @@
 <p>
-  standardviewsetup works!
+  This page describes how to set up a standard view component. This has been updated as of 03/16/2019.
 </p>
+<p>
+  For a view component, the type script needs to have the following includes:
+</p>
+<code>
+import {{ '{' }} ViewMethodsService {{ '}' }} from '../../services/sharedMethods/view-methods.service';<br />
+import {{ '{' }} ActivatedRoute, Router, {{ '}' }} from '@angular/router';
+<br />
+</code>
+<p>
+  As well, the constructor and the onInit need to look like this:
+  <br />
+</p>
+<code>
+    constructor(private _viewMethodsService: ViewMethodsService, public _activatedRoute: ActivatedRoute) {{ '{' }}<br />
+      this._viewMethodsService.updateTitle(this._activatedRoute);<br />
+    {{ '}' }}<br />
+  
+    ngOnInit() {{ '{' }}<br />
+      this._viewMethodsService.updateTitle(this._activatedRoute);<br />
+    {{ '}' }}<br />
+</code>
+<p>
+  Finally, if you have a view component that has child components, the HTML needs to include the following:
+  <br />
+</p>
+<code>
+    &lt;div *ngIf="_activatedRoute.children.length === 0"&gt;<br />
+    &lt;p&gt;<br />
+        blah works!<br />
+        &lt;/p&gt;<br />
+        &lt;/div&gt;<br />
+        &lt;router-outlet&gt;&lt;/router-outlet&gt;<br />
+</code>

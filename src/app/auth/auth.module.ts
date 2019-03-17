@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthComponent } from './auth.component';
 import { FormsModule } from '@angular/forms';
-
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 //pipes
@@ -47,15 +45,24 @@ import { ReadFirestoreRecordLookupComponent } from './views/read-firestore-recor
 import { StyleguideComponent } from './views/styleguide/styleguide.component';
 import { StandardviewsetupComponent } from './views/standardviewsetup/standardviewsetup.component';
 
-
-
-
+//PrimeNG
+import { PasswordModule } from 'primeng/password';
+import { CheckboxModule } from 'primeng/checkbox';
+import { CalendarModule } from 'primeng/calendar';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextModule } from 'primeng/inputtext';
 
 @NgModule({
   imports: [
     CommonModule,
     authRouting,
-    FormsModule
+    FormsModule,
+    //PrimeNG
+    PasswordModule,
+    CheckboxModule,
+    CalendarModule,
+    DropdownModule,
+    InputTextModule,
   ],
   declarations: [
     AuthComponent,

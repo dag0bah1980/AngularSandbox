@@ -1,3 +1,46 @@
-<p>
-  styleguide works!
-</p>
+<div *ngIf="_activatedRoute.children.length === 0">
+  <p>
+    Testing out how to use PrimeNG inputs
+  </p>
+
+    Standard Input Text
+    <input type="text" pInputText [(ngModel)]="property"/>
+
+    <hr />
+
+    Input Addon
+    <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon"><i class="fa fa-envelope"></i></span>
+        <input type="text" pInputText placeholder="EmailAddress">         
+    </div>
+
+    <hr />
+
+    Input Password
+    <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon"><i class="fa fa-lock"></i></span>
+        <input type="password" pPassword placeholder="Password">         
+    </div>
+
+    <hr />
+
+    Input Date/Time
+    <div class="ui-inputgroup">
+        <span class="ui-inputgroup-addon"><i class="fa fa-calendar"></i></span>
+        <p-calendar [(ngModel)]="date7" [showTime]="true" hourFormat="12"></p-calendar>
+    </div>
+
+    <hr />
+    
+    Input Chekbox
+    <p-checkbox name="groupname" value="val1" [(ngModel)]="selectedValues"></p-checkbox>
+
+    <hr />
+
+    Input Dropdown
+    <p-dropdown [options]="cities" [(ngModel)]="selectedCity" placeholder="Select a City" optionLabel="name" [showClear]="true" filter="true"></p-dropdown>
+
+</div>
+<router-outlet></router-outlet>
+
+

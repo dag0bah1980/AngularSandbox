@@ -81,7 +81,7 @@ const authRouterConfig: Routes = [
                 subtitle: "a security mgmt subtitle"
               }
           },
-          { path: 'styleguide', component: StyleguideComponent, canActivate: [AuthGuard],
+          { path: 'styleguide', component: StyleguideComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard],
               data: {
                 breadcrumb: "Style Guide",
                 pagetitle: "Style Guide",
