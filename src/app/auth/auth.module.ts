@@ -51,6 +51,8 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
+import { TableModule } from 'primeng/table';
+
 
 @NgModule({
   imports: [
@@ -63,6 +65,7 @@ import { InputTextModule } from 'primeng/inputtext';
     CalendarModule,
     DropdownModule,
     InputTextModule,
+    TableModule,
   ],
   declarations: [
     AuthComponent,

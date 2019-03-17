@@ -3,6 +3,10 @@ import { ViewMethodsService } from '../../services/sharedMethods/view-methods.se
 import { ActivatedRoute, Router, } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 
+//For Table demo
+import { Car } from '../../models/car';
+import { CarService } from '../../services/data/sample/car.service';
+
 interface City {
   name: string,
   code: string
@@ -18,7 +22,10 @@ export class StyleguideComponent implements OnInit {
   cities: City[];
   selectedCity: City;
 
-  constructor(private _viewMethodsService: ViewMethodsService, public _activatedRoute: ActivatedRoute) {
+  cars: Car[];
+  cols: any[];
+
+  constructor(private _viewMethodsService: ViewMethodsService, public _activatedRoute: ActivatedRoute, private _carService: CarService) {
     this._viewMethodsService.updateTitle(this._activatedRoute);
     this.cities = [
       {name: 'New York', code: 'NY'},
@@ -32,5 +39,13 @@ export class StyleguideComponent implements OnInit {
 
   ngOnInit() {
     this._viewMethodsService.updateTitle(this._activatedRoute);
+    this._carService.getCarsSmall().then(cars => this.cars = cars);
+
+        this.cols = [
+            { field: 'vin', header: 'Vin' },
+            { field: 'year', header: 'Year' },
+            { field: 'brand', header: 'Brand' },
+            { field: 'color', header: 'Color' }
+        ];
   }
 }

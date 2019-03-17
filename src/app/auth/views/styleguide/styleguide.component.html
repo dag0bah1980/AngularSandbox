@@ -40,6 +40,32 @@
     Input Dropdown
     <p-dropdown [options]="cities" [(ngModel)]="selectedCity" placeholder="Select a City" optionLabel="name" [showClear]="true" filter="true"></p-dropdown>
 
+    <hr />
+
+    Table Example:
+    <p-table [columns]="cols" [value]="cars" [reorderableColumns]="true">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:2.5em"></th>
+                <th>Vin</th>
+                <th>Year</th>
+                <th>Brand</th>
+                <th>Color</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-car let-columns="columns" let-index="rowIndex">
+            <tr [pReorderableRow]="index">
+                <td>
+                    <i class="fa fa-bars" pReorderableRowHandle></i>
+                </td>
+                <td>{{car.vin}}</td>
+                <td>{{car.year}}</td>
+                <td>{{car.brand}}</td>
+                <td>{{car.color}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
 </div>
 <router-outlet></router-outlet>
 
