@@ -21,6 +21,10 @@ import { DeleteLogicalFirestoreRecordComponent } from './views/delete-logical-fi
 import { StyleguideComponent } from './views/styleguide/styleguide.component';
 import { StandardviewsetupComponent } from './views/standardviewsetup/standardviewsetup.component';
 
+import { DatasetupComponent } from './views/datasetup/datasetup.component';
+import { DatasetupsampleComponent } from './views/datasetupsample/datasetupsample.component';
+
+
 import { AuthGuard } from '../core/auth.guard';
 
 const authRouterConfig: Routes = [
@@ -80,6 +84,22 @@ const authRouterConfig: Routes = [
                 pagetitle: "security mgmt",
                 subtitle: "a security mgmt subtitle"
               }
+          },
+          { path: 'datasetup', component: DatasetupComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard],
+              data: {
+                breadcrumb: "Data Setup",
+                pagetitle: "Data Setup",
+                subtitle: "Data Setup Root Page"
+              },
+              children: [
+                { path: 'datasetupsample', component: DatasetupsampleComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard],
+                    data: {
+                      breadcrumb: "Data Setup Sample Page",
+                      pagetitle: "Data Setup Sample",
+                      subtitle: "Data Setup Sample - subtitle"
+                    }
+                },
+              ]
           },
           { path: 'styleguide', component: StyleguideComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard],
               data: {

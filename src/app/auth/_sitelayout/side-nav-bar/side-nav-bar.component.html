@@ -79,6 +79,23 @@
       </li>
 
       <li class="treeview" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a routerLink="/auth/datasetup">
+          <i class="fa fa-book"></i>
+          <span>DataSetup</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li>
+            <a routerLink="/auth/datasetup/datasetupsample">
+              <i class="fa fa-plus"></i>Sample Data Setup screen
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="treeview" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         <a routerLink="/auth/styleguide">
           <i class="fa fa-book"></i>
           <span>Style Guide</span>

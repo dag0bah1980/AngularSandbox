@@ -52,6 +52,13 @@ import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
+import { SidebarModule } from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button';
+import { EditorModule } from 'primeng/editor';
+
+
+import { DatasetupComponent } from './views/datasetup/datasetup.component';
+import { DatasetupsampleComponent } from './views/datasetupsample/datasetupsample.component';
 
 
 @NgModule({
@@ -66,6 +73,9 @@ import { TableModule } from 'primeng/table';
     DropdownModule,
     InputTextModule,
     TableModule,
+    SidebarModule,
+    ButtonModule,
+    EditorModule,
   ],
   declarations: [
     AuthComponent,
@@ -96,6 +106,8 @@ import { TableModule } from 'primeng/table';
     ReadFirestoreRecordLookupComponent,
     StyleguideComponent,
     StandardviewsetupComponent,
+    DatasetupComponent,
+    DatasetupsampleComponent,
 
   ],
   providers: [
