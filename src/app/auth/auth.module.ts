@@ -4,6 +4,8 @@ import { AuthComponent } from './auth.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 //pipes
 import { TimedatePipe } from './pipes/timedate.pipe';
 
@@ -63,6 +65,7 @@ import { DatasetupsampleComponent } from './views/datasetupsample/datasetupsampl
 
 @NgModule({
   imports: [
+    ReactiveFormsModule,
     CommonModule,
     authRouting,
     FormsModule,

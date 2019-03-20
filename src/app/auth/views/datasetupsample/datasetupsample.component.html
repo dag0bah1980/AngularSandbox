@@ -1,136 +1,174 @@
 <div class="ui-g ui-fluid">
 
-  <div class="ui-g-12 ui-md-4">
-      <div class="ui-inputgroup">
-          <button pButton id="disabled-btn" type="button" (click)="toggleDisabled()" icon="fa fa-lock" class="ui-button-warning"></button>    
-          <input type="text" pInputText placeholder="Code" [disabled]="disabled" tabindex="1">   
-      </div>
-  </div>
-  <div class="ui-md-2">
-      <div class="ui-g-12">
-        <p-checkbox name="group2" value="IsActive" label="Is Active" [(ngModel)]="selectedCategories" inputId="IsActive"></p-checkbox>
-      </div>
-  </div>
-  <div class="ui-md-2">
-      <div class="ui-g-12">
-        <p-checkbox name="group2" value="IsDeleted" label="Is Deleted" [(ngModel)]="selectedCategories" inputId="IsDeleted"></p-checkbox>
-      </div>
-  </div>
-  <div class="ui-md-4">
-      &nbsp;
-  </div>
-  <div class="ui-g-12 ui-md-6">
-      <div class="ui-inputgroup">
-          <button pButton type="button" (click)="display = true" icon="fa fa-file-text-o" class="ui-button-primary"></button>    
-          <input type="text" pInputText placeholder="Description" tabindex="2">   
-      </div>
-  </div>
-  <div class="ui-md-6">
-      &nbsp;
-  </div>
-  <div class="ui-md-3">
-      <div class="ui-inputgroup">
-          <button pButton type="button" (click)="display = true" icon="fa fa-hashtag" class="ui-button-primary"></button>    
-          <input type="text" pInputText placeholder="Sample Float" tabindex="2">   
-      </div>
-  </div>
-  <div class="ui-md-3">
-      <div class="ui-inputgroup">
-          <button pButton type="button" (click)="display = true" icon="fa fa-hashtag" class="ui-button-primary"></button>    
-          <input type="text" pInputText placeholder="Sample Integer" tabindex="2">   
-      </div>
-  </div>
-  <div class="ui-md-6">
-      &nbsp;
-  </div>
-  <div class="ui-md-3">
-      <div class="ui-inputgroup">
-          <button pButton type="button" (click)="display = true" icon="fa fa-calendar" class="ui-button-primary"></button>    
-          <input type="text" pInputText placeholder="Sample Date" tabindex="2">   
-      </div>
-  </div>
-  <div class="ui-md-3">
-      <div class="ui-inputgroup">
-          <button pButton type="button" (click)="display = true" icon="fa fa-clock-o" class="ui-button-primary"></button>    
-          <input type="text" pInputText placeholder="Sample Time" tabindex="2">   
-      </div>
-  </div>
-  <div class="ui-md-6">
-      &nbsp;
-  </div>
-  <div class="ui-md-6">
-    Sample Memo / Comments
-      <p-editor [(ngModel)]="text" [style]="{'height':'220px'}">
-          <p-header>
-              <span class="ql-formats">
-                  <button class="ql-bold" aria-label="Bold"></button>
-                  <button class="ql-italic" aria-label="Italic"></button>
-                  <button class="ql-underline" aria-label="Underline"></button>
-              </span>
-          </p-header>
-      </p-editor>
-  </div>
-  <div class="ui-md-6">
-      &nbsp;
-  </div>
-  <div class="ui-md-3">
-      <div class="ui-inputgroup">
-        <button pButton type="button" (click)="display = true" icon="fa fa-search-plus " class="ui-button-primary"></button> 
-        <p-dropdown [options]="cities" [(ngModel)]="selectedCity" placeholder="Select a City" optionLabel="name" [showClear]="true" filter="true" [style]="{'width':'100%'}"></p-dropdown>
-      </div>
-  </div>
-  <div class="ui-md-3">
-      <div class="ui-inputgroup">
-        <button pButton type="button" (click)="display = true" icon="fa fa-search-plus" class="ui-button-primary"></button> 
-        <p-dropdown [options]="cities" [(ngModel)]="selectedCity" placeholder="Select a City 2" optionLabel="name" [showClear]="true" filter="true" [style]="{'width':'100%'}"></p-dropdown>
-      </div>
-  </div>
-  <div class="ui-md-6">
-      &nbsp;
-  </div>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmitTest()">
 
-  <div class="ui-md-3">
-      <div class="ui-inputgroup">
-          <button pButton type="button" (click)="display = true" icon="fa fa-calendar-plus-o" class="ui-button-primary"></button>    
-          <input type="text" pInputText placeholder="Created On" tabindex="2">   
-      </div>
-  </div>
-  <div class="ui-md-3">
-      <div class="ui-inputgroup">
-          <button pButton type="button" (click)="display = true" icon="fa fa-calendar-plus-o" class="ui-button-primary"></button>    
-          <input type="text" pInputText placeholder="Modified On" tabindex="2">   
-      </div>
-  </div>
-  <div class="ui-md-6">
-      &nbsp;
-  </div>
+    <label>
+      First Name:
+      <input type="text" formControlName="firstName">
+    </label>
 
-  <div class="ui-md-3">
-      <div class="ui-inputgroup">
-          <button pButton type="button" (click)="display = true" icon="fa fa-user-circle-o" class="ui-button-primary"></button>    
-          <input type="text" pInputText placeholder="Created By" tabindex="2">   
-      </div>
-  </div>
-  <div class="ui-md-3">
-      <div class="ui-inputgroup">
-          <button pButton type="button" (click)="display = true" icon="fa fa-user-circle" class="ui-button-primary"></button>    
-          <input type="text" pInputText placeholder="Modified By" tabindex="2">   
-      </div>
-  </div>
-  <div class="ui-md-6">
-      &nbsp;
-  </div>
+    <label>
+      Last Name:
+      <input type="text" formControlName="lastName">
+    </label>
+    <p>
+      Form Status: {{ profileForm.status }}
+    </p>
 
-  <div class="ui-md-12">
-      <hr />
-  </div>
-  <div class="ui-md-12">
-      <p-button label="Save" (onClick)="handleClick()" styleClass="ui-button-primary"></p-button>&nbsp;
-      <p-button label="Cancel" (onClick)="handleClick()" styleClass="ui-button-danger"></p-button>&nbsp;
-      <p-button label="Delete" (onClick)="handleClick()" styleClass="ui-button-warning" [disabled]="disabled"></p-button>&nbsp;
-  </div>
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+  </form>
 </div>
 
+<form [formGroup]="DS_SampleForm" (ngSubmit)="onSubmit()">
+  <div class="ui-g ui-fluid">
+
+    <div class="ui-g-12 ui-md-4">
+      <div class="ui-inputgroup">
+        <button pButton id="disabled-btn" type="button" (click)="toggleDisabled()" icon="fa fa-lock"
+          class="ui-button-warning"></button>
+        <input type="text" pInputText placeholder="Code" [disabled]="disabled" tabindex="1" formControlName="Code">
+      </div>
+    </div>
+    <div class="ui-md-2">
+      <div class="ui-g-12">
+        <p-checkbox name="group2" value="IsActive" label="Is Active" [(ngModel)]="selectedCategories"
+          inputId="IsActive" formControlName="IsActive"></p-checkbox>
+      </div>
+    </div>
+    <div class="ui-md-2">
+      <div class="ui-g-12">
+        <p-checkbox name="group2" value="IsDeleted" label="Is Deleted" [(ngModel)]="selectedCategories"
+          inputId="IsDeleted" formControlName="IsDeleted"></p-checkbox>
+      </div>
+    </div>
+    <div class="ui-md-4">
+      &nbsp;
+    </div>
+    <div class="ui-g-12 ui-md-6">
+      <div class="ui-inputgroup">
+        <button pButton type="button" (click)="display = true" icon="fa fa-file-text-o"
+          class="ui-button-primary"></button>
+        <input type="text" pInputText placeholder="Description" tabindex="2" formControlName="Description">
+      </div>
+    </div>
+    <div class="ui-md-6">
+      &nbsp;
+    </div>
+    <div class="ui-md-3">
+      <div class="ui-inputgroup">
+        <button pButton type="button" (click)="display = true" icon="fa fa-hashtag" class="ui-button-primary"></button>
+        <input type="text" pInputText placeholder="Sample Float" tabindex="2" formControlName="Float">
+      </div>
+    </div>
+    <div class="ui-md-3">
+      <div class="ui-inputgroup">
+        <button pButton type="button" (click)="display = true" icon="fa fa-hashtag" class="ui-button-primary"></button>
+        <input type="text" pInputText placeholder="Sample Integer" tabindex="2" formControlName="Integer">
+      </div>
+    </div>
+    <div class="ui-md-6">
+      &nbsp;
+    </div>
+    <div class="ui-md-3">
+      <div class="ui-inputgroup">
+        <button pButton type="button" (click)="display = true" icon="fa fa-calendar" class="ui-button-primary"></button>
+        <p-calendar [(ngModel)]="date7" placeholder="Sample Date" formControlName="Date"></p-calendar>      
+      </div>
+    </div>
+    <div class="ui-md-3">
+      <div class="ui-inputgroup">
+        <button pButton type="button" (click)="display = true" icon="fa fa-clock-o" class="ui-button-primary"></button>
+        <p-calendar [(ngModel)]="date8"  placeholder="Sample Time" [timeOnly]="true" hourFormat="12" formControlName="Time"></p-calendar>
+      </div>
+    </div>
+    <div class="ui-md-6">
+      &nbsp;
+    </div>
+    <div class="ui-md-6">
+      Sample Memo / Comments
+      <p-editor [(ngModel)]="text" [style]="{'height':'220px'}" formControlName="Memo">
+        <p-header>
+          <span class="ql-formats">
+            <button class="ql-bold" aria-label="Bold"></button>
+            <button class="ql-italic" aria-label="Italic"></button>
+            <button class="ql-underline" aria-label="Underline"></button>
+          </span>
+        </p-header>
+      </p-editor>
+    </div>
+    <div class="ui-md-6">
+      &nbsp;
+    </div>
+    <div class="ui-md-3">
+      <div class="ui-inputgroup">
+        <button pButton type="button" (click)="display = true" icon="fa fa-search-plus "
+          class="ui-button-primary"></button>
+        <p-dropdown [options]="cities" [(ngModel)]="selectedCity" placeholder="Select a City" optionLabel="name"
+          [showClear]="true" filter="true" [style]="{'width':'100%'}" formControlName="Lookup1"></p-dropdown>
+      </div>
+    </div>
+    <div class="ui-md-3">
+      <div class="ui-inputgroup">
+        <button pButton type="button" (click)="display = true" icon="fa fa-search-plus"
+          class="ui-button-primary"></button>
+        <p-dropdown [options]="cities" [(ngModel)]="selectedCity" placeholder="Select a City 2" optionLabel="name"
+          [showClear]="true" filter="true" [style]="{'width':'100%'}" formControlName="Lookup2"></p-dropdown>
+      </div>
+    </div>
+    <div class="ui-md-6">
+      &nbsp;
+    </div>
+    <div class="ui-md-3">
+      <div class="ui-inputgroup">
+        <button pButton type="button" (click)="display = true" icon="fa fa-calendar-plus-o"
+          class="ui-button-primary"></button>
+        <input type="text" pInputText placeholder="Created On" tabindex="2" formControlName="CreatedOn" disabled>
+      </div>
+    </div>
+    <div class="ui-md-3">
+      <div class="ui-inputgroup">
+        <button pButton type="button" (click)="display = true" icon="fa fa-calendar-plus-o"
+          class="ui-button-primary"></button>
+        <input type="text" pInputText placeholder="Modified On" tabindex="2" formControlName="ModifiedOn" disabled>
+      </div>
+    </div>
+    <div class="ui-md-6">
+      &nbsp;
+    </div>
+
+    <div class="ui-md-3">
+      <div class="ui-inputgroup">
+        <button pButton type="button" (click)="display = true" icon="fa fa-user-circle-o"
+          class="ui-button-primary"></button>
+        <input type="text" pInputText placeholder="Created By" tabindex="2" formControlName="CreatedBy" disabled>
+      </div>
+    </div>
+    <div class="ui-md-3">
+      <div class="ui-inputgroup">
+        <button pButton type="button" (click)="display = true" icon="fa fa-user-circle"
+          class="ui-button-primary"></button>
+        <input type="text" pInputText placeholder="Modified By" tabindex="2" formControlName="ModifiedBy" disabled>
+      </div>
+    </div>
+    <div class="ui-md-6">
+      &nbsp;
+    </div>
+
+    <div class="ui-md-12">
+      <hr />
+      <p>
+          Form Status: {{ DS_SampleForm.status }}
+      </p>
+    </div>
+    <div class="ui-md-12">
+      <p-button label="Save" (onClick)="handleClick()" styleClass="ui-button-primary"></p-button>&nbsp;
+      <p-button label="Cancel" (onClick)="handleClick()" styleClass="ui-button-danger"></p-button>&nbsp;
+      <p-button label="Delete" (onClick)="handleClick()" styleClass="ui-button-warning" [disabled]="disabled">
+      </p-button>&nbsp;
+    </div>
+  </div>
+</form>
+
 <p-sidebar [(visible)]="display" position="right" [baseZIndex]="10000">
-    Content
+  Content
 </p-sidebar>
