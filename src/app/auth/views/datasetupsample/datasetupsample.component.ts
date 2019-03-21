@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewMethodsService } from '../../services/sharedMethods/view-methods.service';
 import { ActivatedRoute, Router, } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 //For Dropdown example
 interface City {
@@ -32,7 +32,7 @@ export class DatasetupsampleComponent implements OnInit {
     Code: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$'), Validators.minLength(3),Validators.maxLength(32)]),
     Description: new FormControl('', [Validators.minLength(3),Validators.maxLength(512)]),
     IsActive: new FormControl(''),
-    IsDeleted: new FormControl(''),
+    IsDeleted: new FormControl({value:'',disabled: true}),
     Float: new FormControl('', [Validators.pattern('^\\d+\\.\\d{2}$')]), //two decimal places indicated by {2}
     Integer: new FormControl('', [Validators.pattern('^[0-9]*$')]),
     Date: new FormControl(''),
@@ -56,7 +56,7 @@ export class DatasetupsampleComponent implements OnInit {
     console.warn(this.DS_SampleForm.value);
   }
 
-  constructor(private _viewMethodsService: ViewMethodsService, public _activatedRoute: ActivatedRoute,) { 
+  constructor(private _viewMethodsService: ViewMethodsService, public _activatedRoute: ActivatedRoute, private _formBuilder: FormBuilder) { 
     this._viewMethodsService.updateTitle(this._activatedRoute);
     this.cities = [
       {name: 'New York', code: 'NY'},
@@ -67,8 +67,58 @@ export class DatasetupsampleComponent implements OnInit {
     ];
   }
 
+  CodeCtrl: FormControl;
+  DescriptionCtrl: FormControl;
+  IsActiveCtrl: FormControl;
+  IsDeletedCtrl: FormControl;
+  FloatCtrl: FormControl;
+  IntegerCtrl: FormControl;
+  DateCtrl: FormControl;
+  TimeCtrl: FormControl;
+  MemoCtrl: FormControl;
+  Lookup1Ctrl: FormControl;
+  Lookup2Ctrl: FormControl;
+  CreatedOnCtrl: FormControl;
+  ModifiedOnCtrl: FormControl;
+  CreatedByCtrl: FormControl;
+  ModifiedByCtrl: FormControl;
+
   ngOnInit() {
     this._viewMethodsService.updateTitle(this._activatedRoute);
+    
+    this.CodeCtrl = this._formBuilder.control({value:'Code', disabled: true}, [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$'), Validators.minLength(3),Validators.maxLength(32)]);
+    this.DescriptionCtrl = this._formBuilder.control('Description', [Validators.minLength(3),Validators.maxLength(512)]);
+    this.IsActiveCtrl = this._formBuilder.control('IsActive');
+    this.IsDeletedCtrl = this._formBuilder.control({value:'IsDeleted', disabled: true});
+    this.FloatCtrl = this._formBuilder.control('Float',[Validators.pattern('^\\d+\\.\\d{2}$')]);
+    this.IntegerCtrl = this._formBuilder.control('Integer', [Validators.pattern('^\\d+\\.\\d{2}$')]);
+    this.DateCtrl = this._formBuilder.control('');
+    this.TimeCtrl = this._formBuilder.control('');
+    this.MemoCtrl = this._formBuilder.control('Memo');
+    this.Lookup1Ctrl = this._formBuilder.control('Lookup1');
+    this.Lookup2Ctrl = this._formBuilder.control('Lookup2');
+    this.CreatedOnCtrl = this._formBuilder.control({value: 'CreatedOn', disabled: true});
+    this.ModifiedOnCtrl = this._formBuilder.control({value: 'ModifiedOn', disabled: true});
+    this.CreatedByCtrl = this._formBuilder.control({value: 'CreatedBy', disabled: true});
+    this.ModifiedByCtrl = this._formBuilder.control({value: 'ModifiedBy', disabled: true});
+
+    this.DS_SampleForm = this._formBuilder.group({
+      Code: this.CodeCtrl,
+      Description: this.DescriptionCtrl,
+      IsActive: this.IsActiveCtrl,
+      IsDeleted: this.IsDeletedCtrl,
+      Float: this.FloatCtrl,
+      Integer: this.IntegerCtrl,
+      Date: this.DateCtrl,
+      Time: this.TimeCtrl,
+      Memo: this.MemoCtrl,
+      Lookup1: this.Lookup1Ctrl,
+      Lookup2: this.Lookup2Ctrl,
+      CreatedOn: this.CreatedOnCtrl,
+      ModifiedOn: this.ModifiedOnCtrl,
+      CreatedBy: this.CreatedByCtrl,
+      ModifiedBy: this.ModifiedByCtrl,
+    });
   }
 
   disabled: boolean = true;

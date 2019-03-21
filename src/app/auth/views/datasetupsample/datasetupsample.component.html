@@ -26,7 +26,7 @@
       <div class="ui-inputgroup">
         <button pButton id="disabled-btn" type="button" (click)="toggleDisabled()" icon="fa fa-lock"
           class="ui-button-warning"></button>
-        <input type="text" pInputText placeholder="Code" [disabled]="disabled" tabindex="1" formControlName="Code">
+        <input type="text" pInputText placeholder="Code"  tabindex="1" formControlName="Code" [(ngModel)]="Code">
       </div>
     </div>
     <div class="ui-md-2">
@@ -37,8 +37,7 @@
     </div>
     <div class="ui-md-2">
       <div class="ui-g-12">
-        <p-checkbox name="group2" value="IsDeleted" label="Is Deleted" [(ngModel)]="selectedCategories"
-          inputId="IsDeleted" formControlName="IsDeleted"></p-checkbox>
+        <p-checkbox name="group2" value="IsDeleted" label="Is Deleted" [(ngModel)]="selectedCategories" inputId="IsDeleted" formControlName="IsDeleted"></p-checkbox>
       </div>
     </div>
     <div class="ui-md-4">
@@ -70,17 +69,17 @@
       &nbsp;
     </div>
     <div class="ui-md-3">
-      <div class="ui-inputgroup">
-        <button pButton type="button" (click)="display = true" icon="fa fa-calendar" class="ui-button-primary"></button>
-        <p-calendar [(ngModel)]="date7" placeholder="Sample Date" formControlName="Date"></p-calendar>      
+        <div class="ui-inputgroup">
+          <button pButton type="button" (click)="display = true" icon="fa fa-calendar" class="ui-button-primary"></button>
+          <p-calendar [(ngModel)]="date7" placeholder="Sample Date" formControlName="Date"></p-calendar>      
+        </div>
       </div>
-    </div>
-    <div class="ui-md-3">
-      <div class="ui-inputgroup">
-        <button pButton type="button" (click)="display = true" icon="fa fa-clock-o" class="ui-button-primary"></button>
-        <p-calendar [(ngModel)]="date8"  placeholder="Sample Time" [timeOnly]="true" hourFormat="12" formControlName="Time"></p-calendar>
+      <div class="ui-md-3">
+        <div class="ui-inputgroup">
+          <button pButton type="button" (click)="display = true" icon="fa fa-clock-o" class="ui-button-primary"></button>
+          <p-calendar [(ngModel)]="date8"  placeholder="Sample Time" [timeOnly]="true" hourFormat="12" formControlName="Time"></p-calendar>
+        </div>
       </div>
-    </div>
     <div class="ui-md-6">
       &nbsp;
     </div>
@@ -122,14 +121,14 @@
       <div class="ui-inputgroup">
         <button pButton type="button" (click)="display = true" icon="fa fa-calendar-plus-o"
           class="ui-button-primary"></button>
-        <input type="text" pInputText placeholder="Created On" tabindex="2" formControlName="CreatedOn" disabled>
+        <input type="text" pInputText placeholder="Created On" tabindex="2" formControlName="CreatedOn">
       </div>
     </div>
     <div class="ui-md-3">
       <div class="ui-inputgroup">
         <button pButton type="button" (click)="display = true" icon="fa fa-calendar-plus-o"
           class="ui-button-primary"></button>
-        <input type="text" pInputText placeholder="Modified On" tabindex="2" formControlName="ModifiedOn" disabled>
+        <input type="text" pInputText placeholder="Modified On" tabindex="2" formControlName="ModifiedOn">
       </div>
     </div>
     <div class="ui-md-6">
@@ -140,14 +139,14 @@
       <div class="ui-inputgroup">
         <button pButton type="button" (click)="display = true" icon="fa fa-user-circle-o"
           class="ui-button-primary"></button>
-        <input type="text" pInputText placeholder="Created By" tabindex="2" formControlName="CreatedBy" disabled>
+        <input type="text" pInputText placeholder="Created By" tabindex="2" formControlName="CreatedBy">
       </div>
     </div>
     <div class="ui-md-3">
       <div class="ui-inputgroup">
         <button pButton type="button" (click)="display = true" icon="fa fa-user-circle"
           class="ui-button-primary"></button>
-        <input type="text" pInputText placeholder="Modified By" tabindex="2" formControlName="ModifiedBy" disabled>
+        <input type="text" pInputText placeholder="Modified By" tabindex="2" formControlName="ModifiedBy">
       </div>
     </div>
     <div class="ui-md-6">
@@ -159,11 +158,18 @@
       <p>
           Form Status: {{ DS_SampleForm.status }}
       </p>
+      <div class="ui-md-12" *ngIf="CodeCtrl.invalid && (CodeCtrl.dirty || CodeCtrl.touched)">
+          <div *ngIf="CodeCtrl.errors.required">
+            <ul>
+              <li>Code is required.</li>
+            </ul>
+          </div>
+        </div>
     </div>
     <div class="ui-md-12">
       <p-button label="Save" (onClick)="handleClick()" styleClass="ui-button-primary"></p-button>&nbsp;
       <p-button label="Cancel" (onClick)="handleClick()" styleClass="ui-button-danger"></p-button>&nbsp;
-      <p-button label="Delete" (onClick)="handleClick()" styleClass="ui-button-warning" [disabled]="disabled">
+      <p-button label="Delete" (onClick)="handleClick()" styleClass="ui-button-warning">
       </p-button>&nbsp;
     </div>
   </div>
