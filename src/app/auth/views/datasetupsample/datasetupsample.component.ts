@@ -86,21 +86,21 @@ export class DatasetupsampleComponent implements OnInit {
   ngOnInit() {
     this._viewMethodsService.updateTitle(this._activatedRoute);
     
-    this.CodeCtrl = this._formBuilder.control({value:'Code', disabled: true}, [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$'), Validators.minLength(3),Validators.maxLength(32)]);
-    this.DescriptionCtrl = this._formBuilder.control('Description', [Validators.minLength(3),Validators.maxLength(512)]);
+    this.CodeCtrl = this._formBuilder.control({value:'Code'}, [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$'), Validators.minLength(3),Validators.maxLength(32)]);
+    this.DescriptionCtrl = this._formBuilder.control('', [Validators.minLength(3),Validators.maxLength(512)]);
     this.IsActiveCtrl = this._formBuilder.control('IsActive');
     this.IsDeletedCtrl = this._formBuilder.control({value:'IsDeleted', disabled: true});
-    this.FloatCtrl = this._formBuilder.control('Float',[Validators.pattern('^\\d+\\.\\d{2}$')]);
-    this.IntegerCtrl = this._formBuilder.control('Integer', [Validators.pattern('^\\d+\\.\\d{2}$')]);
+    this.FloatCtrl = this._formBuilder.control('',[Validators.pattern('^\\d+\\.\\d{2}$')]);
+    this.IntegerCtrl = this._formBuilder.control('', [Validators.pattern('^\\d+\\.\\d{2}$')]);
     this.DateCtrl = this._formBuilder.control('');
     this.TimeCtrl = this._formBuilder.control('');
-    this.MemoCtrl = this._formBuilder.control('Memo');
-    this.Lookup1Ctrl = this._formBuilder.control('Lookup1');
-    this.Lookup2Ctrl = this._formBuilder.control('Lookup2');
-    this.CreatedOnCtrl = this._formBuilder.control({value: 'CreatedOn', disabled: true});
-    this.ModifiedOnCtrl = this._formBuilder.control({value: 'ModifiedOn', disabled: true});
-    this.CreatedByCtrl = this._formBuilder.control({value: 'CreatedBy', disabled: true});
-    this.ModifiedByCtrl = this._formBuilder.control({value: 'ModifiedBy', disabled: true});
+    this.MemoCtrl = this._formBuilder.control('');
+    this.Lookup1Ctrl = this._formBuilder.control('');
+    this.Lookup2Ctrl = this._formBuilder.control('');
+    this.CreatedOnCtrl = this._formBuilder.control({value: '', disabled: true});
+    this.ModifiedOnCtrl = this._formBuilder.control({value: '', disabled: true});
+    this.CreatedByCtrl = this._formBuilder.control({value: '', disabled: true});
+    this.ModifiedByCtrl = this._formBuilder.control({value: '', disabled: true});
 
     this.DS_SampleForm = this._formBuilder.group({
       Code: this.CodeCtrl,
