@@ -61,6 +61,8 @@ import { EditorModule } from 'primeng/editor';
 
 import { DatasetupComponent } from './views/datasetup/datasetup.component';
 import { DatasetupsampleComponent } from './views/datasetupsample/datasetupsample.component';
+import { PrioritiesComponent } from './views/priorities/priorities.component';
+import { SeveritiesComponent } from './views/severities/severities.component';
 
 
 @NgModule({
@@ -111,6 +113,8 @@ import { DatasetupsampleComponent } from './views/datasetupsample/datasetupsampl
     StandardviewsetupComponent,
     DatasetupComponent,
     DatasetupsampleComponent,
+    PrioritiesComponent,
+    SeveritiesComponent,
 
   ],
   providers: [
