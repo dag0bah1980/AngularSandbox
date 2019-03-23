@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ViewMethodsService } from '../../services/sharedMethods/view-methods.service';
 import { ActivatedRoute, Router, } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Priority, Severity } from '../../models/DS_interfaces';
+
+
+import { Observable, throwError } from 'rxjs';
+
+import { DatasetupService } from '../../services/data/datasetup.service';
+import { map } from 'rxjs/operators';
 
 //For Dropdown example
 interface City {
@@ -18,14 +25,22 @@ interface City {
 export class DatasetupsampleComponent implements OnInit {
 
   //For Dropdown example
-  cities: City[];
+  cities1: City[];
+  cities2: City[];
   selectedCity: City;
 
+  //For Dropdowns:
+  Priorities: Priority[];
+  selectedPriority: Priority;
+
+  Severities: Severity[];
+  selectedSeverity: Severity;
+  //Severities
+
   //For Form example
-  profileForm = new FormGroup({
-    firstName: new FormControl('',Validators.required),
-    lastName: new FormControl(''),
-  });
+  Code: String;
+  date7: Date;
+  date8: Date;
 
   
   DS_SampleForm = new FormGroup({
@@ -38,8 +53,8 @@ export class DatasetupsampleComponent implements OnInit {
     Date: new FormControl(''),
     Time: new FormControl(''),
     Memo: new FormControl(''),
-    Lookup1: new FormControl(''),
-    Lookup2: new FormControl(''),
+    Priority: new FormControl(''),
+    Severity: new FormControl(''),
     CreatedOn: new FormControl(''),
     ModifiedOn: new FormControl(''),
     CreatedBy: new FormControl(''),
@@ -47,24 +62,35 @@ export class DatasetupsampleComponent implements OnInit {
   });
 
   onSubmitTest() {
-    // TODO: Use EventEmitter with form value
-    console.warn(this.profileForm.value);
   }
 
+  private locations = [];
   onSubmit() {
     // TODO: Use EventEmitter with form value
-    console.warn(this.DS_SampleForm.value);
+    //console.warn(this.DS_SampleForm.value);
+
   }
 
-  constructor(private _viewMethodsService: ViewMethodsService, public _activatedRoute: ActivatedRoute, private _formBuilder: FormBuilder) { 
+  constructor(private _viewMethodsService: ViewMethodsService, public _activatedRoute: ActivatedRoute, private _formBuilder: FormBuilder, private _dataSetupService: DatasetupService) { 
     this._viewMethodsService.updateTitle(this._activatedRoute);
-    this.cities = [
+    this._dataSetupService.getPriorities()
+    .subscribe((res : Location[])=>{
+      console.log(res);
+      this.locations = res;
+    });
+      
+    this.cities1 = [
       {name: 'New York', code: 'NY'},
-      {name: 'Rome', code: 'RM'},
+      {name: 'Rome', code: 'RM'},      
+    ];
+
+    this.cities2 = [
       {name: 'London', code: 'LDN'},
       {name: 'Istanbul', code: 'IST'},
-      {name: 'Paris', code: 'PRS'}
+      {name: 'Paris', code: 'PRS'},
     ];
+
+    
   }
 
   CodeCtrl: FormControl;
@@ -76,8 +102,8 @@ export class DatasetupsampleComponent implements OnInit {
   DateCtrl: FormControl;
   TimeCtrl: FormControl;
   MemoCtrl: FormControl;
-  Lookup1Ctrl: FormControl;
-  Lookup2Ctrl: FormControl;
+  PriorityCtrl: FormControl;
+  SeverityCtrl: FormControl;
   CreatedOnCtrl: FormControl;
   ModifiedOnCtrl: FormControl;
   CreatedByCtrl: FormControl;
@@ -95,8 +121,8 @@ export class DatasetupsampleComponent implements OnInit {
     this.DateCtrl = this._formBuilder.control('');
     this.TimeCtrl = this._formBuilder.control('');
     this.MemoCtrl = this._formBuilder.control('');
-    this.Lookup1Ctrl = this._formBuilder.control('');
-    this.Lookup2Ctrl = this._formBuilder.control('');
+    this.PriorityCtrl = this._formBuilder.control('');
+    this.SeverityCtrl = this._formBuilder.control('');
     this.CreatedOnCtrl = this._formBuilder.control({value: '', disabled: true});
     this.ModifiedOnCtrl = this._formBuilder.control({value: '', disabled: true});
     this.CreatedByCtrl = this._formBuilder.control({value: '', disabled: true});
@@ -112,8 +138,8 @@ export class DatasetupsampleComponent implements OnInit {
       Date: this.DateCtrl,
       Time: this.TimeCtrl,
       Memo: this.MemoCtrl,
-      Lookup1: this.Lookup1Ctrl,
-      Lookup2: this.Lookup2Ctrl,
+      Priority: this.PriorityCtrl,
+      Severity: this.SeverityCtrl,
       CreatedOn: this.CreatedOnCtrl,
       ModifiedOn: this.ModifiedOnCtrl,
       CreatedBy: this.CreatedByCtrl,
@@ -137,6 +163,6 @@ export class DatasetupsampleComponent implements OnInit {
   }
 
   handleClick() {
-    //execute action
+    
   }
 }

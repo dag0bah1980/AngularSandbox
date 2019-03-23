@@ -79,18 +79,18 @@
     </div>
     <div class="ui-md-3">
       <div class="ui-inputgroup">
-        <button pButton type="button" (click)="display = true" icon="fa fa-search-plus "
+        <button pButton type="button" (click)="display = true" icon="fa fa-sort-numeric-asc"
           class="ui-button-primary"></button>
-        <p-dropdown [options]="cities" [(ngModel)]="selectedCity" placeholder="Select a City" optionLabel="name"
-          [showClear]="true" filter="true" [style]="{'width':'100%'}" formControlName="Lookup1"></p-dropdown>
+        <p-dropdown [options]="Priorities" [(ngModel)]="selectedPriority" placeholder="Priority" optionLabel="name"
+          [showClear]="true" filter="true" [style]="{'width':'100%'}" formControlName="Priority"></p-dropdown>
       </div>
     </div>
     <div class="ui-md-3">
       <div class="ui-inputgroup">
-        <button pButton type="button" (click)="display = true" icon="fa fa-search-plus"
+        <button pButton type="button" (click)="display = true" icon="fa fa-thermometer"
           class="ui-button-primary"></button>
-        <p-dropdown [options]="cities" [(ngModel)]="selectedCity" placeholder="Select a City 2" optionLabel="name"
-          [showClear]="true" filter="true" [style]="{'width':'100%'}" formControlName="Lookup2"></p-dropdown>
+        <p-dropdown [options]="Severities" [(ngModel)]="selectedSeverity" placeholder="Severity" optionLabel="name"
+          [showClear]="true" filter="true" [style]="{'width':'100%'}" formControlName="Severity"></p-dropdown>
       </div>
     </div>
     <div class="ui-md-6">
