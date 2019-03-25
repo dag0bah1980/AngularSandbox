@@ -10,13 +10,13 @@
     </div>
     <div class="ui-md-2">
       <div class="ui-g-12">
-        <p-checkbox name="group2" value="IsActive" label="Is Active" [(ngModel)]="selectedCategories"
-          inputId="IsActive" formControlName="IsActive"></p-checkbox>
+        <p-checkbox name="group2" value="IsActive" label="Is Active" [(ngModel)]="selectedIsActive"
+          inputId="IsActive" formControlName="IsActive" binary="true"></p-checkbox>
       </div>
     </div>
     <div class="ui-md-2">
       <div class="ui-g-12">
-        <p-checkbox name="group2" value="IsDeleted" label="Is Deleted" [(ngModel)]="selectedCategories" inputId="IsDeleted" formControlName="IsDeleted"></p-checkbox>
+        <p-checkbox name="group2" value="IsDeleted" label="Is Deleted" [(ngModel)]="selectedIsDeleted" inputId="IsDeleted" formControlName="IsDeleted" binary="true"></p-checkbox>
       </div>
     </div>
     <div class="ui-md-4">
@@ -81,7 +81,7 @@
       <div class="ui-inputgroup">
         <button pButton type="button" (click)="display = true" icon="fa fa-sort-numeric-asc"
           class="ui-button-primary"></button>
-        <p-dropdown [options]="Priorities" [(ngModel)]="selectedPriority" placeholder="Priority" optionLabel="name"
+        <p-dropdown [options]="priorities" [(ngModel)]="selectedPriority" placeholder="Priority" optionLabel="NAME"
           [showClear]="true" filter="true" [style]="{'width':'100%'}" formControlName="Priority"></p-dropdown>
       </div>
     </div>
@@ -89,7 +89,7 @@
       <div class="ui-inputgroup">
         <button pButton type="button" (click)="display = true" icon="fa fa-thermometer"
           class="ui-button-primary"></button>
-        <p-dropdown [options]="Severities" [(ngModel)]="selectedSeverity" placeholder="Severity" optionLabel="name"
+        <p-dropdown [options]="severities" [(ngModel)]="selectedSeverity" placeholder="Severity" optionLabel="NAME"
           [showClear]="true" filter="true" [style]="{'width':'100%'}" formControlName="Severity"></p-dropdown>
       </div>
     </div>
@@ -135,7 +135,8 @@
     <div class="ui-md-12">
       <hr />
       <p>
-          Form Status: {{ DS_SampleForm.status }}
+          Form Status: {{ DS_SampleForm.status }}<br />
+          Form Value {{ DS_SampleForm.value | json }}
       </p>
       <div class="ui-md-12" *ngIf="CodeCtrl.invalid && (CodeCtrl.dirty || CodeCtrl.touched)">
           <div *ngIf="CodeCtrl.errors.required">

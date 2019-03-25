@@ -30,10 +30,10 @@ export class DatasetupsampleComponent implements OnInit {
   selectedCity: City;
 
   //For Dropdowns:
-  Priorities: Priority[];
+  priorities: Priority[];
   selectedPriority: Priority;
 
-  Severities: Severity[];
+  severities: Severity[];
   selectedSeverity: Severity;
   //Severities
 
@@ -42,12 +42,13 @@ export class DatasetupsampleComponent implements OnInit {
   date7: Date;
   date8: Date;
 
+  selectedIsActive:boolean;
   
   DS_SampleForm = new FormGroup({
     Code: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$'), Validators.minLength(3),Validators.maxLength(32)]),
     Description: new FormControl('', [Validators.minLength(3),Validators.maxLength(512)]),
-    IsActive: new FormControl(''),
-    IsDeleted: new FormControl({value:'',disabled: true}),
+    IsActive: new FormControl(true),
+    IsDeleted: new FormControl({value:false,disabled: true}),
     Float: new FormControl('', [Validators.pattern('^\\d+\\.\\d{2}$')]), //two decimal places indicated by {2}
     Integer: new FormControl('', [Validators.pattern('^[0-9]*$')]),
     Date: new FormControl(''),
@@ -64,33 +65,41 @@ export class DatasetupsampleComponent implements OnInit {
   onSubmitTest() {
   }
 
-  private locations = [];
   onSubmit() {
     // TODO: Use EventEmitter with form value
     //console.warn(this.DS_SampleForm.value);
-
+    console.log("test");
+    
   }
 
   constructor(private _viewMethodsService: ViewMethodsService, public _activatedRoute: ActivatedRoute, private _formBuilder: FormBuilder, private _dataSetupService: DatasetupService) { 
     this._viewMethodsService.updateTitle(this._activatedRoute);
-    this._dataSetupService.getPriorities()
-    .subscribe((res : Location[])=>{
-      console.log(res);
-      this.locations = res;
-    });
-      
-    this.cities1 = [
-      {name: 'New York', code: 'NY'},
-      {name: 'Rome', code: 'RM'},      
-    ];
+    this._dataSetupService.getPrioritiesDropDown()
+    .subscribe(
+      (res : Priority[])=>{
+        console.log(res);
+        this.priorities = res;
+      },
+      error =>  {
+        console.log(error);
+        this.DS_SampleForm.get('Priority').disable();
+      },
+      () => console.log('Completed')
+      );
 
-    this.cities2 = [
-      {name: 'London', code: 'LDN'},
-      {name: 'Istanbul', code: 'IST'},
-      {name: 'Paris', code: 'PRS'},
-    ];
-
+    this._dataSetupService.getSeveritiesDropDown()
+      .subscribe(
+        (res : Severity[])=>{
+          console.log(res);
+          this.severities = res;
+        },
+        error => console.log(error),
+        () => console.log('Completed')
+        );
     
+    this.selectedIsActive = true;
+    
+
   }
 
   CodeCtrl: FormControl;
@@ -114,8 +123,8 @@ export class DatasetupsampleComponent implements OnInit {
     
     this.CodeCtrl = this._formBuilder.control({value:'Code'}, [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$'), Validators.minLength(3),Validators.maxLength(32)]);
     this.DescriptionCtrl = this._formBuilder.control('', [Validators.minLength(3),Validators.maxLength(512)]);
-    this.IsActiveCtrl = this._formBuilder.control('IsActive');
-    this.IsDeletedCtrl = this._formBuilder.control({value:'IsDeleted', disabled: true});
+    this.IsActiveCtrl = this._formBuilder.control(true);
+    this.IsDeletedCtrl = this._formBuilder.control({value:false, disabled: true});
     this.FloatCtrl = this._formBuilder.control('',[Validators.pattern('^\\d+\\.\\d{2}$')]);
     this.IntegerCtrl = this._formBuilder.control('', [Validators.pattern('^\\d+\\.\\d{2}$')]);
     this.DateCtrl = this._formBuilder.control('');
@@ -149,6 +158,7 @@ export class DatasetupsampleComponent implements OnInit {
 
   disabled: boolean = true;
   display;
+
 
   //Checkbox example
   selectedCities: string[] = [];
