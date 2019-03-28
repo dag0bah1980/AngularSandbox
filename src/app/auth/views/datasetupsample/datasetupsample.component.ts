@@ -2,17 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ViewMethodsService } from '../../services/sharedMethods/view-methods.service';
 import { ActivatedRoute, } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+
 import { Priority, Severity } from '../../models/DS_interfaces';
-
-
 import { DatasetupService } from '../../services/data/datasetup.service';
-
-//For Dropdown example
-interface City {
-  name: string,
-  code: string
-}
-
 
 @Component({
   selector: 'angsand-datasetupsample',
@@ -40,8 +32,33 @@ export class DatasetupsampleComponent implements OnInit {
   date7: Date;
   date8: Date;
 
+  disabled: boolean = true;
+  display;
+
+  //Editor example
+  text: string;
+
+  //Form Controls used
   
+  CodeCtrl: FormControl;
+  DescriptionCtrl: FormControl;
+  IsActiveCtrl: FormControl;
+  IsDeletedCtrl: FormControl;
+  FloatCtrl: FormControl;
+  IntegerCtrl: FormControl;
+  DateCtrl: FormControl;
+  TimeCtrl: FormControl;
+  MemoCtrl: FormControl;
+  PriorityCtrl: FormControl;
+  SeverityCtrl: FormControl;
+  CreatedOnCtrl: FormControl;
+  ModifiedOnCtrl: FormControl;
+  CreatedByCtrl: FormControl;
+  ModifiedByCtrl: FormControl;
   
+
+  //Do I need this?
+  /*
   DS_SampleForm = new FormGroup({
     Code: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$'), Validators.minLength(3),Validators.maxLength(32)]),
     Description: new FormControl('', [Validators.minLength(3),Validators.maxLength(512)]),
@@ -58,25 +75,29 @@ export class DatasetupsampleComponent implements OnInit {
     ModifiedOn: new FormControl(''),
     CreatedBy: new FormControl(''),
     ModifiedBy: new FormControl(''),
-  });
+  });*/
 
-  onSubmitTest() {
-  }
-
-  onSubmit() {
-    // TODO: Use EventEmitter with form value
-    //console.warn(this.DS_SampleForm.value);
-    console.log("test");
-    
-  }
+  DS_SampleForm;
 
   priorityButtonIcon = "fa fa-spinner fa-pulse fa-fw";
   severityButtonIcon = "fa fa-spinner fa-pulse fa-fw";
 
-  constructor(private _viewMethodsService: ViewMethodsService, public _activatedRoute: ActivatedRoute, private _formBuilder: FormBuilder, private _dataSetupService: DatasetupService) {  
-    
+  constructor(private _viewMethodsService: ViewMethodsService, public _activatedRoute: ActivatedRoute, private _formBuilder: FormBuilder, private _dataSetupService: DatasetupService) {    
+    //this._viewMethodsService.updateTitle(this._activatedRoute);
+  }
 
+  id: number;
+  private sub: any;
+
+  ngOnInit() {   
     this._viewMethodsService.updateTitle(this._activatedRoute);
+    this.sub = this._activatedRoute.params.subscribe(params => {
+      this.id = +params['id']; // (+) converts string 'id' to a number
+      console.log("test");
+      console.log(this.id);
+      // In a real app: dispatch action to load the details here.
+   });
+
     this._dataSetupService.getPrioritiesDropDown()
     .subscribe(
       (res : Priority[])=>{
@@ -101,7 +122,7 @@ export class DatasetupsampleComponent implements OnInit {
         (res : Severity[])=>{
           this.severityButtonIcon = "fa fa-spinner fa-pulse fa-fw"
           console.log(res);
-          this.priorities = res;
+          this.severities = res;
         },
         error =>  {
           console.log(error);
@@ -114,33 +135,9 @@ export class DatasetupsampleComponent implements OnInit {
           console.log('Completed');
         }
       );
-    
+    //just to demo true checkbox
     this.selectedIsActive = true;
-    
 
-  }
-
-  CodeCtrl: FormControl;
-  DescriptionCtrl: FormControl;
-  IsActiveCtrl: FormControl;
-  IsDeletedCtrl: FormControl;
-  FloatCtrl: FormControl;
-  IntegerCtrl: FormControl;
-  DateCtrl: FormControl;
-  TimeCtrl: FormControl;
-  MemoCtrl: FormControl;
-  PriorityCtrl: FormControl;
-  SeverityCtrl: FormControl;
-  CreatedOnCtrl: FormControl;
-  ModifiedOnCtrl: FormControl;
-  CreatedByCtrl: FormControl;
-  ModifiedByCtrl: FormControl;
-
-  ngOnInit() {
-    this.DS_SampleForm.get('Priority').disable();
-    
-    this._viewMethodsService.updateTitle(this._activatedRoute);
-    
     this.CodeCtrl = this._formBuilder.control('', [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$'), Validators.minLength(3),Validators.maxLength(32)]);
     this.DescriptionCtrl = this._formBuilder.control('', [Validators.minLength(3),Validators.maxLength(512)]);
     this.IsActiveCtrl = this._formBuilder.control(true);
@@ -150,8 +147,8 @@ export class DatasetupsampleComponent implements OnInit {
     this.DateCtrl = this._formBuilder.control('');
     this.TimeCtrl = this._formBuilder.control('');
     this.MemoCtrl = this._formBuilder.control('');
-    this.PriorityCtrl = this._formBuilder.control({value: '', disabled: true});
-    this.SeverityCtrl = this._formBuilder.control({value: '', disabled: true});
+    this.PriorityCtrl = this._formBuilder.control({value: null, disabled: true});
+    this.SeverityCtrl = this._formBuilder.control({value: null, disabled: true});
     this.CreatedOnCtrl = this._formBuilder.control({value: '', disabled: true});
     this.ModifiedOnCtrl = this._formBuilder.control({value: '', disabled: true});
     this.CreatedByCtrl = this._formBuilder.control({value: '', disabled: true});
@@ -176,23 +173,12 @@ export class DatasetupsampleComponent implements OnInit {
     });
   }
 
-  disabled: boolean = true;
-  display;
-
-
-  //Checkbox example
-  selectedCities: string[] = [];
-  selectedCategories: string[] = ['Technology', 'Sports'];
-  checked: boolean = false;
-
-  //Editor example
-  text: string;
-
-  toggleDisabled() {
-      this.disabled = !this.disabled;
-  }
-
-  handleClick() {
+  onSubmit() {
+    // TODO: Use EventEmitter with form value
+    //console.warn(this.DS_SampleForm.value);
+    console.log("test");
     
   }
+
+
 }

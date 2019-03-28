@@ -3,8 +3,7 @@
 
     <div class="ui-g-12 ui-md-4">
       <div class="ui-inputgroup">
-        <button pButton id="disabled-btn" type="button" (click)="toggleDisabled()" icon="fa fa-lock"
-          class="ui-button-warning"></button>
+        <button pButton id="disabled-btn" type="button"  icon="fa fa-lock" class="ui-button-warning"></button>
         <input type="text" pInputText placeholder="Code"  tabindex="1" formControlName="Code">
       </div>
     </div>
@@ -48,13 +47,13 @@
     <div class="ui-md-3">
         <div class="ui-inputgroup">
           <button pButton type="button" (click)="display = true" icon="fa fa-calendar" class="ui-button-primary"></button>
-          <p-calendar placeholder="Sample Date" formControlName="Date"></p-calendar>      
+          <p-calendar placeholder="Sample Date" formControlName="Date" dateFormat="dd.mm.yy"></p-calendar>      
         </div>
       </div>
       <div class="ui-md-3">
         <div class="ui-inputgroup">
           <button pButton type="button" (click)="display = true" icon="fa fa-clock-o" class="ui-button-primary"></button>
-          <p-calendar placeholder="Sample Time" [timeOnly]="true" hourFormat="12" formControlName="Time"></p-calendar>
+          <p-calendar placeholder="Sample Time" [timeOnly]="true" hourFormat="12" formControlName="Time" timeFormat="HH:mm"></p-calendar>
         </div>
       </div>
     <div class="ui-md-6">
@@ -128,6 +127,7 @@
     <div class="ui-md-12">
       <hr />
       <p>
+          Route Param: {{ id }}<br />
           Form Status: {{ DS_SampleForm.status }}<br />
           Form Value {{ DS_SampleForm.value | json }}
       </p>
@@ -145,9 +145,9 @@
         </div>
     </div>
     <div class="ui-md-12">
-      <p-button label="Save" (onClick)="handleClick()" styleClass="ui-button-primary"></p-button>&nbsp;
-      <p-button label="Cancel" (onClick)="handleClick()" styleClass="ui-button-danger"></p-button>&nbsp;
-      <p-button label="Delete" (onClick)="handleClick()" styleClass="ui-button-warning">
+      <p-button label="Save" styleClass="ui-button-primary"></p-button>&nbsp;
+      <p-button label="Cancel" styleClass="ui-button-danger"></p-button>&nbsp;
+      <p-button label="Delete" styleClass="ui-button-warning">
       </p-button>&nbsp;
     </div>
   </div>

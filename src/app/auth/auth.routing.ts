@@ -92,7 +92,14 @@ const authRouterConfig: Routes = [
                 subtitle: "Data Setup Root Page"
               },
               children: [
-                { path: 'datasetupsample', component: DatasetupsampleComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard],
+                { path: 'datasetupsample', redirectTo: 'datasetupsample/', canActivate: [AuthGuard], canActivateChild: [AuthGuard],
+                    data: {
+                      breadcrumb: "Data Setup Sample Page",
+                      pagetitle: "Data Setup Sample",
+                      subtitle: "Data Setup Sample - subtitle"
+                    }
+                },
+                { path: 'datasetupsample/:id', component: DatasetupsampleComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard],
                     data: {
                       breadcrumb: "Data Setup Sample Page",
                       pagetitle: "Data Setup Sample",
