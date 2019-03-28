@@ -4,8 +4,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Priority, Severity } from '../../models/DS_interfaces';
 
 import SystemGlobalVars from '../../../../SystemGlobalVars.json'
-import { retryWhen, flatMap } from 'rxjs/operators';
-import { interval, throwError, of } from 'rxjs';
+import { retryWhen, flatMap, switchMap } from 'rxjs/operators';
+import { interval, throwError, of, merge } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -38,12 +38,13 @@ export class DatasetupService {
 
   getPrioritiesDropDown() {
     console.log(this.DATA_API_ENDPOINT+'/api/DataSetup/Priorities');
+
     return this._http.get(this.DATA_API_ENDPOINT+'/api/DataSetup/PrioritiesDropDown')
     .pipe(retryWhen(_ => {
       return interval(5000).pipe(
         flatMap(count => count == this.DATA_RETRY_COUNT ? throwError("Giving up") : of(count))
       )
-    }))
+    })) 
   }
 
   //Severities End points

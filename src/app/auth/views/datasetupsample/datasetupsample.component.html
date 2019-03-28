@@ -5,18 +5,17 @@
       <div class="ui-inputgroup">
         <button pButton id="disabled-btn" type="button" (click)="toggleDisabled()" icon="fa fa-lock"
           class="ui-button-warning"></button>
-        <input type="text" pInputText placeholder="Code"  tabindex="1" formControlName="Code" [(ngModel)]="Code">
+        <input type="text" pInputText placeholder="Code"  tabindex="1" formControlName="Code">
       </div>
     </div>
     <div class="ui-md-2">
       <div class="ui-g-12">
-        <p-checkbox name="group2" value="IsActive" label="Is Active" [(ngModel)]="selectedIsActive"
-          inputId="IsActive" formControlName="IsActive" binary="true"></p-checkbox>
+        <p-checkbox name="group2" value="IsActive" label="Is Active" inputId="IsActive" formControlName="IsActive" binary="true"></p-checkbox>
       </div>
     </div>
     <div class="ui-md-2">
       <div class="ui-g-12">
-        <p-checkbox name="group2" value="IsDeleted" label="Is Deleted" [(ngModel)]="selectedIsDeleted" inputId="IsDeleted" formControlName="IsDeleted" binary="true"></p-checkbox>
+        <p-checkbox name="group2" value="IsDeleted" label="Is Deleted" inputId="IsDeleted" formControlName="IsDeleted" binary="true"></p-checkbox>
       </div>
     </div>
     <div class="ui-md-4">
@@ -24,8 +23,7 @@
     </div>
     <div class="ui-g-12 ui-md-6">
       <div class="ui-inputgroup">
-        <button pButton type="button" (click)="display = true" icon="fa fa-file-text-o"
-          class="ui-button-primary"></button>
+        <button pButton type="button" (click)="display = true" icon="fa fa-file-text-o" class="ui-button-primary"></button>
         <input type="text" pInputText placeholder="Description" tabindex="2" formControlName="Description">
       </div>
     </div>
@@ -50,13 +48,13 @@
     <div class="ui-md-3">
         <div class="ui-inputgroup">
           <button pButton type="button" (click)="display = true" icon="fa fa-calendar" class="ui-button-primary"></button>
-          <p-calendar [(ngModel)]="date7" placeholder="Sample Date" formControlName="Date"></p-calendar>      
+          <p-calendar placeholder="Sample Date" formControlName="Date"></p-calendar>      
         </div>
       </div>
       <div class="ui-md-3">
         <div class="ui-inputgroup">
           <button pButton type="button" (click)="display = true" icon="fa fa-clock-o" class="ui-button-primary"></button>
-          <p-calendar [(ngModel)]="date8"  placeholder="Sample Time" [timeOnly]="true" hourFormat="12" formControlName="Time"></p-calendar>
+          <p-calendar placeholder="Sample Time" [timeOnly]="true" hourFormat="12" formControlName="Time"></p-calendar>
         </div>
       </div>
     <div class="ui-md-6">
@@ -64,7 +62,7 @@
     </div>
     <div class="ui-md-6">
       Sample Memo / Comments
-      <p-editor [(ngModel)]="text" [style]="{'height':'220px'}" formControlName="Memo">
+      <p-editor [style]="{'height':'220px'}" formControlName="Memo">
         <p-header>
           <span class="ql-formats">
             <button class="ql-bold" aria-label="Bold"></button>
@@ -79,18 +77,15 @@
     </div>
     <div class="ui-md-3">
       <div class="ui-inputgroup">
-        <button pButton type="button" (click)="display = true" icon="fa fa-sort-numeric-asc"
-          class="ui-button-primary"></button>
-        <p-dropdown [options]="priorities" [(ngModel)]="selectedPriority" placeholder="Priority" optionLabel="NAME"
-          [showClear]="true" filter="true" [style]="{'width':'100%'}" formControlName="Priority"></p-dropdown>
+          <!-- fa fa-sort-numeric-asc -->
+        <button pButton type="button" (click)="display = true" [icon]="priorityButtonIcon" class="ui-button-primary"></button>
+        <p-dropdown [options]="priorities" placeholder="Priority" optionLabel="NAME" [showClear]="true" filter="true" [style]="{'width':'100%'}" formControlName="Priority"></p-dropdown>
       </div>
     </div>
     <div class="ui-md-3">
       <div class="ui-inputgroup">
-        <button pButton type="button" (click)="display = true" icon="fa fa-thermometer"
-          class="ui-button-primary"></button>
-        <p-dropdown [options]="severities" [(ngModel)]="selectedSeverity" placeholder="Severity" optionLabel="NAME"
-          [showClear]="true" filter="true" [style]="{'width':'100%'}" formControlName="Severity"></p-dropdown>
+        <button pButton type="button" (click)="display = true" [icon]="severityButtonIcon" class="ui-button-primary"></button>
+        <p-dropdown [options]="severities" placeholder="Severity" optionLabel="NAME" [showClear]="true" filter="true" [style]="{'width':'100%'}" formControlName="Severity"></p-dropdown>
       </div>
     </div>
     <div class="ui-md-6">
@@ -98,15 +93,13 @@
     </div>
     <div class="ui-md-3">
       <div class="ui-inputgroup">
-        <button pButton type="button" (click)="display = true" icon="fa fa-calendar-plus-o"
-          class="ui-button-primary"></button>
+        <button pButton type="button" (click)="display = true" icon="fa fa-calendar-plus-o" class="ui-button-primary"></button>
         <input type="text" pInputText placeholder="Created On" tabindex="2" formControlName="CreatedOn">
       </div>
     </div>
     <div class="ui-md-3">
       <div class="ui-inputgroup">
-        <button pButton type="button" (click)="display = true" icon="fa fa-calendar-plus-o"
-          class="ui-button-primary"></button>
+        <button pButton type="button" (click)="display = true" icon="fa fa-calendar-plus-o" class="ui-button-primary"></button>
         <input type="text" pInputText placeholder="Modified On" tabindex="2" formControlName="ModifiedOn">
       </div>
     </div>
