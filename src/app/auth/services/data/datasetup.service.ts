@@ -6,6 +6,11 @@ import { Priority, Severity } from '../../models/DS_interfaces';
 import SystemGlobalVars from '../../../../SystemGlobalVars.json'
 import { retryWhen, flatMap, switchMap } from 'rxjs/operators';
 import { interval, throwError, of, merge } from 'rxjs';
+import { Observable } from 'rxjs/Rx';
+
+import 'rxjs/add/operator/toPromise';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -69,5 +74,37 @@ export class DatasetupService {
     }))
   }
 
+  //DS_Sample End points
+  getDS_Samples() {
+    console.log(this.DATA_API_ENDPOINT+'/api/DataSetup/DS_Samples');
+    return this._http.get(this.DATA_API_ENDPOINT+'/api/DataSetup/DS_Samples')
+    .pipe(retryWhen(_ => {
+      return interval(5000).pipe(
+        flatMap(count => count == this.DATA_RETRY_COUNT ? throwError("Giving up") : of(count))
+      )
+    }))
+  }
+
+  getDS_Sample(id: number) {
+    console.log(this.DATA_API_ENDPOINT+'/api/DataSetup/DS_Sample/'+id);
+    return this._http.get(this.DATA_API_ENDPOINT+'/api/DataSetup/DS_Sample/'+id)
+    .pipe(retryWhen(_ => {
+      return interval(5000).pipe(
+        flatMap(count => count == this.DATA_RETRY_COUNT ? throwError("Giving up") : of(count))
+      )
+    }))
+    
+  }
+
+  getDS_SamplesDropDown() {
+    console.log(this.DATA_API_ENDPOINT+'/api/DataSetup/DS_Samples');
+
+    return this._http.get(this.DATA_API_ENDPOINT+'/api/DataSetup/DS_Sample')
+    .pipe(retryWhen(_ => {
+      return interval(5000).pipe(
+        flatMap(count => count == this.DATA_RETRY_COUNT ? throwError("Giving up") : of(count))
+      )
+    })) 
+  }
 
 }

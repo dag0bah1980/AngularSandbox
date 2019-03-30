@@ -3,7 +3,7 @@ import { ViewMethodsService } from '../../services/sharedMethods/view-methods.se
 import { ActivatedRoute, } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
-import { Priority, Severity } from '../../models/DS_interfaces';
+import { DS_Sample, Priority, Severity } from '../../models/DS_interfaces';
 import { DatasetupService } from '../../services/data/datasetup.service';
 
 @Component({
@@ -12,6 +12,11 @@ import { DatasetupService } from '../../services/data/datasetup.service';
   styleUrls: ['./datasetupsample.component.css']
 })
 export class DatasetupsampleComponent implements OnInit {
+
+  FormState: String;
+
+  //Current DataSetup Sample
+  currentDS_Sample: DS_Sample;
 
   //For currentValues;
   selectedIsActive:boolean;
@@ -28,7 +33,7 @@ export class DatasetupsampleComponent implements OnInit {
   //Severities
 
   //For Form example
-  Code: String;
+  //Code: String;
   date7: Date;
   date8: Date;
 
@@ -84,60 +89,14 @@ export class DatasetupsampleComponent implements OnInit {
 
   constructor(private _viewMethodsService: ViewMethodsService, public _activatedRoute: ActivatedRoute, private _formBuilder: FormBuilder, private _dataSetupService: DatasetupService) {    
     //this._viewMethodsService.updateTitle(this._activatedRoute);
+
   }
 
   id: number;
   private sub: any;
 
   ngOnInit() {   
-    this._viewMethodsService.updateTitle(this._activatedRoute);
-    this.sub = this._activatedRoute.params.subscribe(params => {
-      this.id = +params['id']; // (+) converts string 'id' to a number
-      console.log("test");
-      console.log(this.id);
-      // In a real app: dispatch action to load the details here.
-   });
-
-    this._dataSetupService.getPrioritiesDropDown()
-    .subscribe(
-      (res : Priority[])=>{
-        this.priorityButtonIcon = "fa fa-spinner fa-pulse fa-fw"
-        console.log(res);
-        this.priorities = res;
-      },
-      error =>  {
-        console.log(error);
-        this.DS_SampleForm.get('Priority').disable();
-        this.priorityButtonIcon = "fa fa-exclamation-triangle";
-      },
-      () =>  {
-        this.DS_SampleForm.get('Priority').enable();
-        this.priorityButtonIcon = "fa fa-sort-numeric-asc";
-        console.log('Completed');
-      }
-    );
-
-    this._dataSetupService.getSeveritiesDropDown()
-      .subscribe(
-        (res : Severity[])=>{
-          this.severityButtonIcon = "fa fa-spinner fa-pulse fa-fw"
-          console.log(res);
-          this.severities = res;
-        },
-        error =>  {
-          console.log(error);
-          this.DS_SampleForm.get('Severity').disable();
-          this.severityButtonIcon = "fa fa-exclamation-triangle";
-        },
-        () =>  {
-          this.DS_SampleForm.get('Severity').enable();
-          this.severityButtonIcon = "fa fa-thermometer";
-          console.log('Completed');
-        }
-      );
-    //just to demo true checkbox
-    this.selectedIsActive = true;
-
+    this.FormState = 'NEW';
     this.CodeCtrl = this._formBuilder.control('', [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$'), Validators.minLength(3),Validators.maxLength(32)]);
     this.DescriptionCtrl = this._formBuilder.control('', [Validators.minLength(3),Validators.maxLength(512)]);
     this.IsActiveCtrl = this._formBuilder.control(true);
@@ -171,6 +130,79 @@ export class DatasetupsampleComponent implements OnInit {
       CreatedBy: this.CreatedByCtrl,
       ModifiedBy: this.ModifiedByCtrl,
     });
+
+
+    this._viewMethodsService.updateTitle(this._activatedRoute);
+    this.sub = this._activatedRoute.params.subscribe(params => {
+      this.id = +params['id']; // (+) converts string 'id' to a number
+      if (this.id != 0) {
+        console.log('Edit');
+        this.FormState = 'EDIT';
+
+        this._dataSetupService.getDS_Sample(this.id)
+          .subscribe(
+          (res : DS_Sample)=>{
+            console.log(res);
+            this.currentDS_Sample = res;
+          },
+          error => {
+            console.log(error);
+          },
+          () =>  {
+            console.log('Completed'+this.currentDS_Sample[0].CODE);
+          }
+          );
+      } else {
+        console.log('New');
+        this.FormState = 'NEW';
+    
+      }
+      // In a real app: dispatch action to load the details here.
+
+      
+   });
+
+    this._dataSetupService.getPrioritiesDropDown()
+    .subscribe(
+      (res : Priority[])=>{
+        this.priorityButtonIcon = "fa fa-spinner fa-pulse fa-fw"
+        //console.log(res);
+        this.priorities = res;
+      },
+      error =>  {
+        console.log(error);
+        this.DS_SampleForm.get('Priority').disable();
+        this.priorityButtonIcon = "fa fa-exclamation-triangle";
+      },
+      () =>  {
+        this.DS_SampleForm.get('Priority').enable();
+        this.priorityButtonIcon = "fa fa-sort-numeric-asc";
+        //console.log('Completed');
+      }
+    );
+
+    this._dataSetupService.getSeveritiesDropDown()
+      .subscribe(
+        (res : Severity[])=>{
+          this.severityButtonIcon = "fa fa-spinner fa-pulse fa-fw"
+          //console.log(res);
+          this.severities = res;
+        },
+        error =>  {
+          console.log(error);
+          this.DS_SampleForm.get('Severity').disable();
+          this.severityButtonIcon = "fa fa-exclamation-triangle";
+        },
+        () =>  {
+          this.DS_SampleForm.get('Severity').enable();
+          this.severityButtonIcon = "fa fa-thermometer";
+          //console.log('Completed');
+        }
+      );
+
+    //just to demo true checkbox
+    //this.selectedIsActive = true;
+
   }
 
   onSubmit() {
