@@ -94,8 +94,26 @@ export class DatasetupsampleComponent implements OnInit {
 
   id: number;
   private sub: any;
+  obstest: any;
 
-  ngOnInit() {   
+  ngOnInit() {  
+    this._dataSetupService.ObsgetDS_Sample(2142246)
+    .subscribe(
+      (res : DS_Sample)=>{
+        console.log('start');
+        console.log(res);
+        this.obstest = res;
+      },
+      error =>  {
+        console.log('error');
+        console.log(error);
+      },
+      () =>  {
+        console.log('doneObs');
+        console.log(this.obstest);
+      }
+    );
+
     this.FormState = 'NEW';
     this.CodeCtrl = this._formBuilder.control('', [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$'), Validators.minLength(3),Validators.maxLength(32)]);
     this.DescriptionCtrl = this._formBuilder.control('', [Validators.minLength(3),Validators.maxLength(512)]);

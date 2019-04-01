@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-import { Priority, Severity } from '../../models/DS_interfaces';
+import { Priority, Severity, DS_Sample } from '../../models/DS_interfaces';
 
 import SystemGlobalVars from '../../../../SystemGlobalVars.json'
 import { retryWhen, flatMap, switchMap } from 'rxjs/operators';
@@ -9,7 +9,7 @@ import { interval, throwError, of, merge } from 'rxjs';
 import { Observable } from 'rxjs/Rx';
 
 import 'rxjs/add/operator/toPromise';
-
+import 'rxjs/add/operator/map';
 
 
 @Injectable({
@@ -92,9 +92,17 @@ export class DatasetupService {
       return interval(5000).pipe(
         flatMap(count => count == this.DATA_RETRY_COUNT ? throwError("Giving up") : of(count))
       )
-    }))
-    
+    }))    
   }
+
+  ObsgetDS_Sample(id: number):Observable<DS_Sample> {
+    console.log(this.DATA_API_ENDPOINT+'/api/DataSetup/DS_Sample/'+id);
+    return this._http.get<{ds_sample: DS_Sample}>(this.DATA_API_ENDPOINT+'/api/DataSetup/DS_Sample/'+id)
+    .map(res => res.ds_sample);
+
+  }
+
+
 
   getDS_SamplesDropDown() {
     console.log(this.DATA_API_ENDPOINT+'/api/DataSetup/DS_Samples');
