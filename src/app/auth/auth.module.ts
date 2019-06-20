@@ -57,12 +57,15 @@ import { TableModule } from 'primeng/table';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { EditorModule } from 'primeng/editor';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 
 import { DatasetupComponent } from './views/datasetup/datasetup.component';
 import { DatasetupsampleComponent } from './views/datasetupsample/datasetupsample.component';
+import { DatasetuplistsampleComponent } from './views/datasetuplistsample/datasetuplistsample.component';
 import { PrioritiesComponent } from './views/priorities/priorities.component';
 import { SeveritiesComponent } from './views/severities/severities.component';
+
 
 
 @NgModule({
@@ -81,6 +84,7 @@ import { SeveritiesComponent } from './views/severities/severities.component';
     SidebarModule,
     ButtonModule,
     EditorModule,
+    MultiSelectModule,
   ],
   declarations: [
     AuthComponent,
@@ -115,6 +119,7 @@ import { SeveritiesComponent } from './views/severities/severities.component';
     DatasetupsampleComponent,
     PrioritiesComponent,
     SeveritiesComponent,
+    DatasetuplistsampleComponent,
 
   ],
   providers: [

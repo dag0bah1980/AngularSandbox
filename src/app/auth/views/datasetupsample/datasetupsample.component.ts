@@ -49,6 +49,7 @@ export class DatasetupsampleComponent implements OnInit {
   DescriptionCtrl: FormControl;
   IsActiveCtrl: FormControl;
   IsDeletedCtrl: FormControl;
+  SystemCtrl: FormControl;
   FloatCtrl: FormControl;
   IntegerCtrl: FormControl;
   DateCtrl: FormControl;
@@ -119,6 +120,7 @@ export class DatasetupsampleComponent implements OnInit {
     this.DescriptionCtrl = this._formBuilder.control('', [Validators.minLength(3),Validators.maxLength(512)]);
     this.IsActiveCtrl = this._formBuilder.control(true);
     this.IsDeletedCtrl = this._formBuilder.control({value:false, disabled: true});
+    this.SystemCtrl = this._formBuilder.control({value:false, disabled: false});
     this.FloatCtrl = this._formBuilder.control('',[Validators.pattern('^\\d+\\.\\d{2}$')]);
     this.IntegerCtrl = this._formBuilder.control('', [Validators.pattern('^\\d+\\.\\d{2}$')]);
     this.DateCtrl = this._formBuilder.control('');
@@ -136,6 +138,7 @@ export class DatasetupsampleComponent implements OnInit {
       Description: this.DescriptionCtrl,
       IsActive: this.IsActiveCtrl,
       IsDeleted: this.IsDeletedCtrl,
+      System: this.SystemCtrl,
       Float: this.FloatCtrl,
       Integer: this.IntegerCtrl,
       Date: this.DateCtrl,

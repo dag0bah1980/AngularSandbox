@@ -23,6 +23,7 @@ import { StandardviewsetupComponent } from './views/standardviewsetup/standardvi
 
 import { DatasetupComponent } from './views/datasetup/datasetup.component';
 import { DatasetupsampleComponent } from './views/datasetupsample/datasetupsample.component';
+import { DatasetuplistsampleComponent } from './views/datasetuplistsample/datasetuplistsample.component';
 
 
 import { AuthGuard } from '../core/auth.guard';
@@ -104,6 +105,13 @@ const authRouterConfig: Routes = [
                       breadcrumb: "Data Setup Sample Page",
                       pagetitle: "Data Setup Sample",
                       subtitle: "Data Setup Sample - subtitle"
+                    }
+                },
+                { path: 'datasetuplistsample', component: DatasetuplistsampleComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard],
+                    data: {
+                      breadcrumb: "Data Setup List Sample Page",
+                      pagetitle: "Data Setup List Sample",
+                      subtitle: "Data Setup List Sample - subtitle"
                     }
                 },
               ]
