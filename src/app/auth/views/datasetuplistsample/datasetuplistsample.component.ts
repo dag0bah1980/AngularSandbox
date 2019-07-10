@@ -9,7 +9,7 @@ import { CarService } from '../../services/data/sample/car.service';
 @Component({
   selector: 'angsand-datasetuplistsample',
   templateUrl: './datasetuplistsample.component.html',
-  styleUrls: ['./datasetuplistsample.component.css']
+  styleUrls: ['./datasetuplistsample.component.css'],
 })
 export class DatasetuplistsampleComponent implements OnInit {
 

@@ -1,27 +1,90 @@
-123
-<p-table [columns]="selectedColumns" [value]="cars" [reorderableColumns]="true">
+
+<div class="ui-g ui-fluid">
+    <div class="ui-g-6">
+        List of DataSetup Sample Records
+    </div>
+    <div class="ui-g-6" style="text-align:right;">
+        <p-button label="Create New Record" styleClass="ui-button-primary"></p-button>
+    </div>        
+</div>
+<p-table #dt [columns]="selectedColumns" [value]="cars" [reorderableColumns]="true" dataKey="vin">
   <ng-template pTemplate="caption">
-      <div style="text-align:left">
-          <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
-                      selectedItemsLabel="{0} columns selected" [style]="{minWidth: '200px'}" defaultLabel="Choose Columns"></p-multiSelect>
-      </div>
+        <div class="ui-g ui-fluid">
+          <div class="ui-g-6" style="text-align: left;">
+            <p-multiSelect [options]="cols" [(ngModel)]="selectedColumns" optionLabel="header"
+                        selectedItemsLabel="{0} columns selected" [style]="{minWidth: '200px'}" defaultLabel="Choose Columns"></p-multiSelect>
+          </div>
+          <div class="ui-g-6" style="text-align: right;">                     
+              <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+          </div>
+        </div>        
   </ng-template>
   <ng-template pTemplate="header" let-columns>
       <tr>
+          <th style="width:2.5em"></th>
           <th style="width:2.5em"></th>
           <th *ngFor="let col of columns">
               {{col.header}}
           </th>
       </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-car let-columns="columns" let-index="rowIndex">
+  <ng-template pTemplate="body" let-car let-columns="columns" let-index="rowIndex" let-expanded="expanded">
     <tr [pReorderableRow]="index">
       <td>
         <i class="fa fa-bars" pReorderableRowHandle></i>
+      </td>
+      <td>
+        <a href="#" [pRowToggler]="car">
+            <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+        </a>
       </td>
       <td *ngFor="let col of columns">
           {{car[col.field]}}
       </td>
     </tr>
+  </ng-template>
+  <ng-template pTemplate="rowexpansion" let-car let-columns="columns">
+      <tr>
+          <td [attr.colspan]="columns.length + 2">
+              <div class="ui-g ui-fluid" style="font-size:16px;">   
+                  <div class="ui-g-4 ui-md-4">
+                      <p-button label="Edit" styleClass="ui-button-primary"></p-button>&nbsp;
+                      <p-button label="Deactivate" styleClass="ui-button-danger"></p-button>&nbsp;
+                      <p-button label="Delete" styleClass="ui-button-warning"></p-button>&nbsp; 
+                  </div>       
+                  <div class="ui-g-3">
+                      <p-checkbox name="group2" value="IsActive" label="Active" inputId="IsActive" formControlName="IsActive" binary="true"></p-checkbox>
+                  </div>
+                  <div class="ui-g-3">
+                      <p-checkbox name="group2" value="IsActive" label="Deleted" inputId="IsActive" formControlName="IsActive" binary="true"></p-checkbox>
+                  </div>
+                  <div class="ui-g-2">
+                      <p-checkbox name="group2" value="IsActive" label="System" inputId="IsActive" formControlName="IsActive" binary="true"></p-checkbox>
+                  </div>
+                  <div class="ui-g-12 ui-md-12">
+                      <div class="ui-g">
+                          <div class="ui-g-6">
+                              <b>Name:</b> {{car.vin}}
+                          </div>
+                          <div class="ui-g-6">
+                              <b>Description:</b> {{car.year}}
+                          </div>                          
+                          <div class="ui-g-6">
+                              <b>Created By:</b> {{car.color}}
+                          </div>
+                          <div class="ui-g-6">
+                              <b>Created On:</b> {{car.color}}
+                          </div>
+                          <div class="ui-g-6">
+                              <b>Last Modified By:</b> {{car.color}}
+                          </div>
+                          <div class="ui-g-6">
+                              <b>Last Modified On:</b> {{car.color}}
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </td>
+      </tr>
   </ng-template>
 </p-table>
