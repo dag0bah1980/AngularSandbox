@@ -4,6 +4,8 @@ import { AuthComponent } from './auth.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 //pipes
@@ -85,6 +87,7 @@ import { SeveritiesComponent } from './views/severities/severities.component';
     ButtonModule,
     EditorModule,
     MultiSelectModule,
+    DragDropModule
   ],
   declarations: [
     AuthComponent,
