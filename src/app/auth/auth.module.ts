@@ -60,7 +60,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
 import { EditorModule } from 'primeng/editor';
 import { MultiSelectModule } from 'primeng/multiselect';
-
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 import { DatasetupComponent } from './views/datasetup/datasetup.component';
 import { DatasetupsampleComponent } from './views/datasetupsample/datasetupsample.component';
@@ -87,7 +87,8 @@ import { SeveritiesComponent } from './views/severities/severities.component';
     ButtonModule,
     EditorModule,
     MultiSelectModule,
-    DragDropModule
+    DragDropModule,
+    InputTextareaModule
   ],
   declarations: [
     AuthComponent,
