@@ -2,164 +2,233 @@
   simple-todo works!
 </p>
 
-<div class="row">
-    <div class="col-md-6">
-      <div class="box box-default box-solid">
-        <div class="box-header with-border">
-          <h3 class="box-title">Expandable</h3>
-
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-            </button>
-          </div>
-          <!-- /.box-tools -->
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-          The body of the box
-        </div>
-        <!-- /.box-body -->
-      </div>
-      <!-- /.box -->
-    </div>
-    <!-- /.col -->
-</div>
 
 <div class="example-list row col-md-9" cdkDropList (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let movie of movies" cdkDrag>
-        <div class="box box-default box-solid">
+  <div class="example-box" *ngFor="let movie of movies" cdkDrag>
+    <div class="box box-default box-solid">
 
-          <div class="box-header with-border">
-            <input type="checkbox">
-            <h3 class="box-title">              
-              Expandable
-            </h3>
-            <div class="box-tools pull-right">                
-                <button type="button" class="btn btn-box-tool" data-toggle="modal" data-target="#modal-timeentry"><i class="fa fa-clock-o"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                </button>
-            </div>               
-          </div>
-          <!-- /.box-header -->
-          <div class="box-body">            
-            {{movie}}
-          </div>
-          
-          <!-- /.box-body -->
+      <div class="box-header with-border">
+        <input type="checkbox">
+        <h3 class="box-title">
+          Expandable
+        </h3>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-toggle="modal" data-target="#modal-timeentry"><i
+              class="fa fa-clock-o"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+          </button>
         </div>
-        <!-- /.box -->
-    <!-- /.col -->
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        {{movie}}
+      </div>
+
+      <!-- /.box-body -->
     </div>
+    <!-- /.box -->
+    <!-- /.col -->
+  </div>
 </div>
 
 <div class="modal fade" id="modal-timeentry">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Primary Modal</h4>
-        </div>
-        <div class="modal-body">
-            <label>Start Time</label>
-            <p-calendar showIcon="true" icon="fa fa-calendar" showTime="true" hourFormat="12"></p-calendar>
-            <label>End Time</label>
-            <p-calendar showIcon="true" icon="fa fa-calendar" showTime="true" hourFormat="12"></p-calendar>
-            <textarea pInputTextarea></textarea>
-            <hr />
-            <button type="button" class="btn btn-block btn-primary">Add Time</button>
-            <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#modal-timedetails">View Time Entered</button>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-outline">Save changes</button>
-        </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Primary Modal</h4>
       </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
-
-
-  <div class="modal fade" id="modal-timedetails">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Time Details Modal</h4>
-          </div>
-          <div class="modal-body">
-              <div class="box-body">
-                  <table class="table table-bordered">
-                    <tbody><tr>
-                      <th style="width: 10px">#</th>
-                      <th>Task</th>
-                      <th>Progress</th>
-                      <th style="width: 40px">Label</th>
-                    </tr>
-                    <tr>
-                      <td>1.</td>
-                      <td>Update software</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-red">55%</span></td>
-                    </tr>
-                    <tr>
-                      <td>2.</td>
-                      <td>Clean database</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-yellow">70%</span></td>
-                    </tr>
-                    <tr>
-                      <td>3.</td>
-                      <td>Cron job running</td>
-                      <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-light-blue">30%</span></td>
-                    </tr>
-                    <tr>
-                      <td>4.</td>
-                      <td>Fix and squish bugs</td>
-                      <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar progress-bar-success" style="width: 90%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-green">90%</span></td>
-                    </tr>
-                  </tbody></table>
+      <div class="modal-body">
+        <div class="box box-info">
+          <div class="box-body">
+            <div class="form-group ui-g ui-fluid">
+              <div class="ui-md-12">
+                <input type="text" placeholder="Related Time Entry Item" disabled="true" pInputText />                
+              </div>
+              <div class="ui-md-6">
+                <div class="ui-input-group">
+                  <p-calendar showIcon="true" icon="fa fa-calendar" showTime="true" hourFormat="12"
+                    placeholder="Start Time"></p-calendar>
                 </div>
-                <div class="box-footer clearfix">
-                    <ul class="pagination pagination-sm no-margin pull-right">
-                      <li><a href="#">«</a></li>
-                      <li><a href="#">1</a></li>
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#">»</a></li>
-                    </ul>
-                  </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
+              </div>
+              <div class="ui-md-6">
+                <div class="ui-input-group">
+                  <p-calendar showIcon="true" icon="fa fa-calendar" showTime="true" hourFormat="12"
+                    placeholder="End Time"></p-calendar>
+                </div>
+              </div>
+              <div class="ui-md-6">
+                <div class="ui-inputgroup">
+                  <!-- fa fa-sort-numeric-asc -->
+                  <button pButton type="button" icon="fa-sort-numeric-asc"
+                    class="ui-button-primary"></button>
+                  <p-dropdown placeholder="Category" optionLabel="NAME" [showClear]="true"
+                    filter="true" [style]="{'width':'100%'}" formControlName="Priority"></p-dropdown>
+                </div>
+              </div>
+              <div class="ui-md-6">
+                <div class="ui-inputgroup">
+                  <button pButton type="button" icon="fa fa-hourglass" class="ui-button-primary"></button>
+                  <input type="text" pInputText placeholder="Elapsed Time" disabled>
+                </div>
+              </div>
+              <div class="ui-md-12">
+                <div class="ui-input-group">
+                  <textarea [rows]="5" [cols]="64" placeholder="Note" pInputTextarea></textarea>
+                </div>
+              </div>
+              <div class="ui-md-12">
+                <p-chips placeholder="Tags" formControlName="tags"></p-chips>
+              </div>
+              <div class="ui-md-12">
+                <hr />
+              </div>
 
+              <button type="button" class="btn btn-block btn-primary">Add Time</button>
+              <button type="button" class="btn btn-block btn-primary" data-toggle="modal"
+                data-target="#modal-timedetails">View Time Entered</button>
+            </div>
+          </div>
         </div>
-        <!-- /.modal-content -->
       </div>
-      <!-- /.modal-dialog -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline">Save changes</button>
+      </div>
     </div>
-    <!-- /.modal -->
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+
+<div class="modal fade" id="modal-timedetails">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Time Details Modal</h4>
+      </div>
+      <div class="modal-body">
+        <div class="box-body">          
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th>User</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Note</th>
+                <th style="width: 40px">Details</th>
+              </tr>
+              <tr>
+                <td>
+                  <span title="FullUser name" class="badge bg-light-blue">Username<br />12345678</span>
+                </td>
+                <td>
+                  <span class="badge bg-green">Jan 23<br />@ 11:45AM</span>
+                </td>
+                <td>
+                  <span class="badge bg-red">Jan 23<br />@ 12:35PM</span>
+                </td>
+                <td>
+                  1234567890123456789012345...
+                </td>
+                <td>
+                  <button type="button" class="btn btn-info"><i class="fa fa-ellipsis-h"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge bg-light-blue">Username<br />12345678</span>
+                </td>
+                <td>
+                  <span class="badge bg-green">Jan 23<br />@ 11:45AM</span>
+                </td>
+                <td>
+                  <span class="badge bg-red">Jan 23<br />@ 12:35PM</span>
+                </td>
+                <td>
+                  1234567890123456789012345...
+                </td>
+                <td>
+                  <button type="button" class="btn btn-info"><i class="fa fa-ellipsis-h"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge bg-light-blue">Username<br />12345678</span>
+                </td>
+                <td>
+                  <span class="badge bg-green">Jan 23<br />@ 11:45AM</span>
+                </td>
+                <td>
+                  <span class="badge bg-red">Jan 23<br />@ 12:35PM</span>
+                </td>
+                <td>
+                  1234567890123456789012345...
+                </td>
+                <td>
+                  <button type="button" class="btn btn-info"><i class="fa fa-ellipsis-h"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge bg-light-blue">Username<br />12345678</span>
+                </td>
+                <td>
+                  <span class="badge bg-green">Jan 23<br />@ 11:45AM</span>
+                </td>
+                <td>
+                  <span class="badge bg-red">Jan 23<br />@ 12:35PM</span>
+                </td>
+                <td>
+                  1234567890123456789012345...
+                </td>
+                <td>
+                  <button type="button" class="btn btn-info"><i class="fa fa-ellipsis-h"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="badge bg-light-blue">Username<br />12345678</span>
+                </td>
+                <td>
+                  <span class="badge bg-green">Jan 23<br />@ 11:45AM</span>
+                </td>
+                <td>
+                  <span class="badge bg-red">Jan 23<br />@ 12:35PM</span>
+                </td>
+                <td>
+                  1234567890123456789012345...
+                </td>
+                <td>
+                  <button type="button" class="btn btn-info"><i class="fa fa-ellipsis-h"></i></button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+        <div class="box-footer clearfix">
+          <ul class="pagination pagination-sm no-margin pull-right">
+            <li><a href="#">«</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">»</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

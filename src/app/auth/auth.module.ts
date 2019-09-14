@@ -61,6 +61,8 @@ import { ButtonModule } from 'primeng/button';
 import { EditorModule } from 'primeng/editor';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ChipsModule } from 'primeng/chips';
+import { TooltipModule } from 'primeng/tooltip';
 
 import { DatasetupComponent } from './views/datasetup/datasetup.component';
 import { DatasetupsampleComponent } from './views/datasetupsample/datasetupsample.component';
@@ -88,7 +90,9 @@ import { SeveritiesComponent } from './views/severities/severities.component';
     EditorModule,
     MultiSelectModule,
     DragDropModule,
-    InputTextareaModule
+    InputTextareaModule,
+    ChipsModule,
+    TooltipModule
   ],
   declarations: [
     AuthComponent,

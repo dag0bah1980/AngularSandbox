@@ -35,4 +35,7 @@ export class SimpleTodoComponent implements OnInit {
     moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
   }
 
+  FullUserName(){
+    return 'User123';
+  }
 }
