@@ -69,6 +69,8 @@ import { DatasetupsampleComponent } from './views/datasetupsample/datasetupsampl
 import { DatasetuplistsampleComponent } from './views/datasetuplistsample/datasetuplistsample.component';
 import { PrioritiesComponent } from './views/priorities/priorities.component';
 import { SeveritiesComponent } from './views/severities/severities.component';
+import { BadgeUserComponent } from './_uiwidgets/badge-user/badge-user.component';
+import { BadgeDateComponent } from './_uiwidgets/badge-date/badge-date.component';
 
 
 
@@ -128,6 +130,8 @@ import { SeveritiesComponent } from './views/severities/severities.component';
     PrioritiesComponent,
     SeveritiesComponent,
     DatasetuplistsampleComponent,
+    BadgeUserComponent,
+    BadgeDateComponent,
 
   ],
   providers: [

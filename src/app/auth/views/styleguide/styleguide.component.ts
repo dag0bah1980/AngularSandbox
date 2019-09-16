@@ -19,6 +19,8 @@ interface City {
 })
 export class StyleguideComponent implements OnInit {
 
+  currDate;
+
   cities: City[];
   selectedCity: City;
 
@@ -34,7 +36,8 @@ export class StyleguideComponent implements OnInit {
       {name: 'Istanbul', code: 'IST'},
       {name: 'Paris', code: 'PRS'}
     ];
-
+    this.currDate = Date.now();
+    console.log(this.currDate);
    }
 
   ngOnInit() {
