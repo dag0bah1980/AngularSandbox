@@ -12,6 +12,8 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 export class SimpleTodoComponent implements OnInit {
 
+  selectedValues: string[] = [];
+  
   movies = [
     'Episode I - The Phantom Menace',
     'Episode II - Attack of the Clones',

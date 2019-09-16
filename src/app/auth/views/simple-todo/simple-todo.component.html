@@ -8,8 +8,10 @@
     <div class="box box-default box-solid">
 
       <div class="box-header with-border">
-        <input type="checkbox">
+
+
         <h3 class="box-title">
+            <p-checkbox name="groupname" value="val1" [(ngModel)]="selectedValues"></p-checkbox>
           Expandable
         </h3>
         <div class="box-tools pull-right">
@@ -65,7 +67,7 @@
                   <button pButton type="button" icon="fa-sort-numeric-asc"
                     class="ui-button-primary"></button>
                   <p-dropdown placeholder="Category" optionLabel="NAME" [showClear]="true"
-                    filter="true" [style]="{'width':'100%'}" formControlName="Priority"></p-dropdown>
+                    filter="true" [style]="{'width':'100%'}"></p-dropdown>
                 </div>
               </div>
               <div class="ui-md-6">
@@ -80,7 +82,7 @@
                 </div>
               </div>
               <div class="ui-md-12">
-                <p-chips placeholder="Tags" formControlName="tags"></p-chips>
+                <p-chips placeholder="Tags"></p-chips>
               </div>
               <div class="ui-md-12">
                 <hr />
