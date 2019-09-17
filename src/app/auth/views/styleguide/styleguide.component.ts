@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ViewMethodsService } from '../../services/sharedMethods/view-methods.service';
 import { ActivatedRoute, Router, } from '@angular/router';
 import { SelectItem } from 'primeng/api';
+import moment from 'moment';
+
 
 //For Table demo
 import { Car } from '../../models/car';
@@ -20,6 +22,7 @@ interface City {
 export class StyleguideComponent implements OnInit {
 
   currDate;
+  currentDateTime;
 
   cities: City[];
   selectedCity: City;
@@ -36,8 +39,10 @@ export class StyleguideComponent implements OnInit {
       {name: 'Istanbul', code: 'IST'},
       {name: 'Paris', code: 'PRS'}
     ];
+    this.currentDateTime = moment().format();
+    
     this.currDate = Date.now();
-    console.log(this.currDate);
+    console.log(this.currentDateTime);
    }
 
   ngOnInit() {
