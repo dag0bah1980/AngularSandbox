@@ -39,10 +39,9 @@ export class StyleguideComponent implements OnInit {
       {name: 'Istanbul', code: 'IST'},
       {name: 'Paris', code: 'PRS'}
     ];
-    this.currentDateTime = moment().format();
     
-    this.currDate = Date.now();
-    console.log(this.currentDateTime);
+    this.currDate = moment().format();
+    
    }
 
   ngOnInit() {
